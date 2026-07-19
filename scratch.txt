@@ -1,0 +1,100 @@
+    <!-- ===== PORTFOLIO — DARK SECTION ===== -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="portfolio-header">
+                <span class="label-pill-light">Sold (263)</span>
+                <h2>Experience real estate <em>where results meet relationships</em></h2>
+                <p class="portfolio-sub">What I\'ve brought to life:</p>
+            </div>
+            <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                <a href="https://www.zillow.com/homedetails/55-Kirk-Ln-Media-PA-19063/9419746_zpid/" target="_blank" class="property-card" style="display: block; text-decoration: none; color: inherit;">
+                    <div class="property-img-wrap">
+                        <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="55 Kirk Ln, Media, PA 19063" loading="lazy">
+                        <div class="property-pills">
+                            <span class="prop-pill" style="background: var(--accent); color: white;">Sold 2 months ago</span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <h4 style="font-size: 1.5rem; margin-bottom: 0.25rem;">,000</h4>
+                        <p style="color: white; margin-bottom: 0.5rem; font-weight: 500;">3 bd · 2 ba · 1,120 sqft</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">55 Kirk Ln, Media, PA 19063</p>
+                        <span class="prop-link">View on Zillow <span class="prop-arrow">↗</span></span>
+                    </div>
+                </a>
+                <a href="https://www.zillow.com/homedetails/1988-Chestnut-Hill-Rd-Mohnton-PA-19540/8913123_zpid/" target="_blank" class="property-card" style="display: block; text-decoration: none; color: inherit;">
+                    <div class="property-img-wrap">
+                        <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="1988 Chestnut Hill Rd, Mohnton, PA 19540" loading="lazy">
+                        <div class="property-pills">
+                            <span class="prop-pill" style="background: var(--accent); color: white;">Sold 2 months ago</span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <h4 style="font-size: 1.5rem; margin-bottom: 0.25rem;">,000</h4>
+                        <p style="color: white; margin-bottom: 0.5rem; font-weight: 500;">3 bd · 2 ba · 1,350 sqft</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">1988 Chestnut Hill Rd, Mohnton, PA 19540</p>
+                        <span class="prop-link">View on Zillow <span class="prop-arrow">↗</span></span>
+                    </div>
+                </a>
+                <a href="https://www.zillow.com/homedetails/201-Emerald-Ln-Media-PA-19063/9414809_zpid/" target="_blank" class="property-card" style="display: block; text-decoration: none; color: inherit;">
+                    <div class="property-img-wrap">
+                        <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="201 Emerald Ln, Media, PA 19063" loading="lazy">
+                        <div class="property-pills">
+                            <span class="prop-pill" style="background: var(--accent); color: white;">Sold 3 months ago</span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <h4 style="font-size: 1.5rem; margin-bottom: 0.25rem;">,000</h4>
+                        <p style="color: white; margin-bottom: 0.5rem; font-weight: 500;">3 bd · 2 ba · 1,224 sqft</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">201 Emerald Ln, Media, PA 19063</p>
+                        <span class="prop-link">View on Zillow <span class="prop-arrow">↗</span></span>
+                    </div>
+                </a>
+                <a href="https://www.zillow.com/homedetails/21-Beaver-Run-Rd-Downingtown-PA-19335/52643830_zpid/" target="_blank" class="property-card" style="display: block; text-decoration: none; color: inherit;">
+                    <div class="property-img-wrap">
+                        <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="21 Beaver Run Rd, Downingtown, PA 19335" loading="lazy">
+                        <div class="property-pills">
+                            <span class="prop-pill" style="background: var(--accent); color: white;">Sold 4 months ago</span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <h4 style="font-size: 1.5rem; margin-bottom: 0.25rem;">,000</h4>
+                        <p style="color: white; margin-bottom: 0.5rem; font-weight: 500;">3 bd · 4 ba · 3,052 sqft</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">21 Beaver Run Rd, Downingtown, PA 19335</p>
+                        <span class="prop-link">View on Zillow <span class="prop-arrow">↗</span></span>
+                    </div>
+                </a>
+                <a href="https://www.zillow.com/homedetails/509-Kolb-Rd-Spring-City-PA-19475/178127480_zpid/" target="_blank" class="property-card" style="display: block; text-decoration: none; color: inherit;">
+                    <div class="property-img-wrap">
+                        <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="509 Kolb Rd, Spring City, PA 19475" loading="lazy">
+                        <div class="property-pills">
+                            <span class="prop-pill" style="background: var(--accent); color: white;">Sold 4 months ago</span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <h4 style="font-size: 1.5rem; margin-bottom: 0.25rem;">,000</h4>
+                        <p style="color: white; margin-bottom: 0.5rem; font-weight: 500;">4 bd · 4 ba · 3,023 sqft</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">509 Kolb Rd, Spring City, PA 19475</p>
+                        <span class="prop-link">View on Zillow <span class="prop-arrow">↗</span></span>
+                    </div>
+                </a>
+                <a href="https://www.zillow.com/homedetails/1004-Turner-Ave-Drexel-Hill-PA-19026/9354734_zpid/" target="_blank" class="property-card" style="display: block; text-decoration: none; color: inherit;">
+                    <div class="property-img-wrap">
+                        <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="1004 Turner Ave, Drexel Hill, PA 19026" loading="lazy">
+                        <div class="property-pills">
+                            <span class="prop-pill" style="background: var(--accent); color: white;">Sold 6 months ago</span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <h4 style="font-size: 1.5rem; margin-bottom: 0.25rem;">,000</h4>
+                        <p style="color: white; margin-bottom: 0.5rem; font-weight: 500;">3 bd · 3 ba · 2,198 sqft</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">1004 Turner Ave, Drexel Hill, PA 19026</p>
+                        <span class="prop-link">View on Zillow <span class="prop-arrow">↗</span></span>
+                    </div>
+                </a>
+                <a href="https://www.zillow.com/profile/MikeRisser1" target="_blank" class="property-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; background: rgba(255,255,255,0.05); border: 2px dashed rgba(255,255,255,0.2);">
+                    <h4 style="color: white; font-size: 1.5rem; margin-bottom: 1rem;">See More on Zillow</h4>
+                    <span class="btn-dark" style="background: var(--accent); color: white;">View Profile <span class="prop-arrow">↗</span></span>
+                </a>
+            </div>
+        </div>
+    </section>

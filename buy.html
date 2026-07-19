@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Dream House | Michael Risser Real Estate</title>
+    <meta name="description" content="Find your dream home in Pennsylvania with Michael Risser. 38 years of buyer representation expertise across Chester, Delaware, Bucks & Montgomery Counties.">
+    <!-- DESIGNED & DEVELOPED by Leads Pilots (www.leadspilots.com) & JASS Solutions (www.jass-solutions.com) -->
+    <link rel="stylesheet" href="css/styles.css?v=20260718">
+    <!-- Cloudflare Turnstile API -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <style>
+        /* Page-specific micro-animations & layout */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* Buy Hero Section */
+        .buy-hero {
+            position: relative;
+            background: linear-gradient(rgba(17, 17, 17, 0.5), rgba(17, 17, 17, 0.5)), url('assets/images/property_1.png') center/cover no-repeat;
+            padding: 12rem 2rem 8rem 2rem;
+            text-align: center;
+            color: var(--bg-white);
+        }
+        .buy-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-serif);
+            color: var(--bg-white);
+        }
+        .buy-hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .buy-hero p {
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Intro Section (Split Layout) */
+        .buy-intro {
+            padding: 6rem 2rem;
+            background: var(--bg-page);
+        }
+        .buy-intro-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .buy-intro-left h2 {
+            font-size: 2.5rem;
+            font-family: var(--font-serif);
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+        .buy-intro-right p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Agent Profile Section */
+        .buy-agent {
+            padding: 6rem 2rem;
+            background: var(--bg-white);
+        }
+        .buy-agent-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .buy-agent-left h2 {
+            font-size: 2.5rem;
+            font-family: var(--font-serif);
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+        .agent-card {
+            background: var(--bg-page);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .agent-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            object-position: top;
+        }
+        .agent-card-body {
+            padding: 2rem;
+        }
+        .agent-card-body h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .agent-card-body p {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Stats Banner */
+        .buy-stats {
+            background: var(--text-dark);
+            color: var(--bg-white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        .buy-stats h2 {
+            font-size: 2.5rem;
+            font-family: var(--font-serif);
+            margin-bottom: 4rem;
+        }
+        .buy-stats-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .stat-item h3 {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-serif);
+        }
+        .stat-item p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
+        }
+
+        /* Form Section */
+        .buy-form-section {
+            padding: 6rem 2rem;
+            background: var(--bg-page);
+        }
+        .buy-form-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        .buy-form-left h2 {
+            font-size: 3rem;
+            font-family: var(--font-serif);
+            color: var(--text-dark);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        .buy-form-left p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .buy-contact-form {
+            background: var(--bg-white);
+            padding: 3rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        @media (max-width: 900px) {
+            .buy-intro-inner, .buy-agent-inner, .buy-form-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .buy-stats-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .buy-hero h1 { font-size: 3rem; }
+            .buy-hero h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">Michael<span>Risser</span></a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-pill">Home</a></li>
+                    <li><a href="buy.html" class="nav-pill active">Find Your Dream House</a></li>
+                    <li><a href="sell.html" class="nav-pill">Sell Your House</a></li>
+                    <li><a href="about.html" class="nav-pill">About</a></li>
+                    <li><a href="testimonials.html" class="nav-pill">Testimonials</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="nav-cta">Book a consultation <span class="nav-cta-arrow">↗</span></a>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="buy-hero fade-in-up">
+        <h1>Find Your Dream Home</h1>
+        <h2>We Are Ready To Help You</h2>
+        <p>We know that buying a home is a major investment, and I am ready to guide you every step of the way to ensure a seamless and profitable transaction.</p>
+        <a href="#buy-form" class="btn-dark" style="padding: 1rem 2rem; font-size: 1.1rem;">Start Your Search Here</a>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="buy-intro">
+        <div class="buy-intro-inner fade-in-up delay-1">
+            <div class="buy-intro-left">
+                <h2>Pennsylvania Real Estate Expert Ready To Help You Find Your Dream Home</h2>
+                <a href="#buy-form" class="btn-dark">Contact Mike <span>↗</span></a>
+            </div>
+            <div class="buy-intro-right">
+                <p>I guarantee to save you money when you retain me as your Buyer's Agent. Over the last 38 years, my contract negotiating skills have been sharpened in every type of market condition.</p>
+                <p>From the first conversation to closing day, I provide the unbiased information and strategic insight you need to make confident, educated real estate decisions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agent Section -->
+    <section class="buy-agent">
+        <div class="buy-agent-inner fade-in-up delay-2">
+            <div class="buy-agent-left">
+                <h2>Michael will help you find your dream house for the best possible price.</h2>
+            </div>
+            <div class="buy-agent-right">
+                <div class="agent-card">
+                    <img src="assets/images/headshot_desk.jpg" alt="Michael Risser">
+                    <div class="agent-card-body">
+                        <h3>Michael Risser</h3>
+                        <p>Associate Broker</p>
+                        <a href="about.html" class="btn-dark" style="width: 100%; justify-content: center;">Meet Michael</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="buy-stats">
+        <h2>Recognized As One Of Pennsylvania's Top Producing Brokers</h2>
+        <div class="buy-stats-grid">
+            <div class="stat-item">
+                <h3>38+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Properties Sold</p>
+            </div>
+            <div class="stat-item">
+                <h3>$1M+</h3>
+                <p>Hall of Fame Inductee</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+        <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container" style="text-align: center;">
+            
+            <h2 style="font-family: var(--font-serif); font-size: 2.5rem; color: var(--text-dark); margin: 1.5rem 0 3rem 0;">What Pennsylvania Buyers & Sellers Are Saying</h2>
+            
+            <div class="testi-carousel-wrapper">
+                <button class="carousel-btn prev-btn">❮</button>
+                <div class="testi-carousel">
+                    <!-- Slide 1 -->
+                    <div class="testi-slide">
+                        <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Mike was an amazing agent, my fiancé and I were buying our first home and mike walked us through every step. He had our best interests at heart the entire time. He wasn’t just looking to sell us a house, he wanted to make sure we found the perfect house for our young family."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Michael Geyer<br><span style="font-weight: 400; font-size: 0.8rem;">Havertown, PA</span></p>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="testi-slide">
+                        <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Mike was an awesome realtor! He helped me sell and buy within my requested time frame. With his cross listings, my home was on the market for only 14 days before it was snagged. He is very knowledgeable and helpful with is advice. I'll be referring him to all my friends and family."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- mochabrown55<br><span style="font-weight: 400; font-size: 0.8rem;">Bought and sold a home</span></p>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="testi-slide">
+                        <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"As first time home buyers, we lucked out with Mike. He was very helpful and educational from the beginning. Our first meeting did not even involve any showings. Instead, he sat down with us and gave a thorough introduction of what we needed to know and what to expect."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- user94500961<br><span style="font-weight: 400; font-size: 0.8rem;">Glen mills, PA</span></p>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="testi-slide">
+                        <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"mike isn't just a realtor, he is an honest, trustworthy and valuable person to know. he has integrity and if you need him, you can count on him. go with mike, he won't let you down."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- tspreng<br><span style="font-weight: 400; font-size: 0.8rem;">Sold a home in PA 18974</span></p>
+                    </div>
+                    <!-- Slide 5 -->
+                    <div class="testi-slide">
+                        <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Mike is dedicated to finding you the right house for you and your family. He is a very patient and thoughtful person and will not try to sell you something that you don’t need or want. His knowledge about the real estate process and how he has advised me has put me at ease."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- donnacolsher<br><span style="font-weight: 400; font-size: 0.8rem;">Philadelphia, PA</span></p>
+                    </div>
+                    <!-- Slide 6 -->
+                    <div class="testi-slide">
+                        <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Mike is a great person and agent. It was very tough for us when we moved and this area last year. However, Mike helped make our transition smoother. He is extremely honest and patient. He treated us like an extended family. We highly recommend him as an agent!"</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Danielle Pierre<br><span style="font-weight: 400; font-size: 0.8rem;">Delaware County, PA</span></p>
+                    </div>
+                    <!-- Slide 7 -->
+                    <div class="testi-slide">
+                        <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"I worked with Mike several time. He know Real Estate. Helped me sell my mother-in- law home and all so helped with my daughter purchase of her home. Mike is a great person to work with. He gets things done efficiently. You cannot go wrong with Mike Risser."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- dardean<br><span style="font-weight: 400; font-size: 0.8rem;">Bought and sold a home</span></p>
+                    </div>
+                    <!-- Slide 8 -->
+                    <div class="testi-slide">
+                        <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Mike helped us sell our home in a very short period of time. He is very knowledgeable about the industry and we felt very comfortable. I would recommend him to any one looking to buy or sell their home."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- raf7006<br><span style="font-weight: 400; font-size: 0.8rem;">Newtown square, PA</span></p>
+                    </div>
+                    <!-- Slide 9 -->
+                    <div class="testi-slide">
+                        <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Mike Risser is very knowledgable about the Chester County/Delaware County area and was able to help us identify several great homes and make the decision on purchasing the perfect home."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- smc727<br><span style="font-weight: 400; font-size: 0.8rem;">Thornton, PA</span></p>
+                    </div>
+                    <!-- Slide 10 -->
+                    <div class="testi-slide">
+                        <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Mike is a seasoned pro. He has been in this business for a long time and it shows. He is extremely patient and easy to work with. He helped us find the perfect place for our first home and negotiated a great deal. Overall, he made the home buying process easy and enjoyable!"</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- JenniferMannion<br><span style="font-weight: 400; font-size: 0.8rem;">Bought a home in PA</span></p>
+                    </div>
+                    <!-- Slide 11 -->
+                    <div class="testi-slide">
+                        <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Michael sold me a house in 2001, helped me sell it for a whopping profit in 2012 and is currently aiding me in finding a new nest now. One of Michael's greatest strengths is his understanding of value in a particular area--for either buyer or seller, he is spot on regarding a home's worth."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- user33352753<br><span style="font-weight: 400; font-size: 0.8rem;">West chester, PA</span></p>
+                    </div>
+                    <!-- Slide 12 -->
+                    <div class="testi-slide">
+                        <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"We listed our house right after the New Year in a poor economy. We were thrilled to have an offer within 30 days. Mike was always there with an answer to a question or information we needed for the quick turnaround. Everything went through like clockwork!"</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- carol covert<br><span style="font-weight: 400; font-size: 0.8rem;">Elverson, PA</span></p>
+                    </div>
+                </div>
+                <button class="carousel-btn next-btn">❯</button>
+            </div>
+            
+            <a href="testimonials.html" class="btn-ghost-dark" style="margin: 3rem auto 0 auto; display: flex; width: max-content; justify-content: center;">Read all 12 reviews →</a>
+        </div>
+    </section>
+
+    <section class="buy-form-section" id="buy-form">
+        <div class="buy-form-inner">
+            <div class="buy-form-left">
+                <h2>We're Ready To Help Find Your Dream Home</h2>
+                <p>Please provide your information below, and I will personally reach out to discuss your real estate goals and begin your custom home search.</p>
+            </div>
+            <div class="buy-form-right">
+                <form id="buyerLeadForm" class="buy-contact-form" action="php/submit.php" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first_name" style="font-weight: 500; color: var(--text-dark);">First Name</label>
+                            <input type="text" id="first_name" name="first_name" placeholder="e.g. John" required style="border: 1px solid var(--border); padding: 0.75rem; border-radius: var(--radius-sm); width: 100%; font-family: var(--font-sans);">
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name" style="font-weight: 500; color: var(--text-dark);">Last Name</label>
+                            <input type="text" id="last_name" name="last_name" placeholder="e.g. Doe" required style="border: 1px solid var(--border); padding: 0.75rem; border-radius: var(--radius-sm); width: 100%; font-family: var(--font-sans);">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row" style="margin-top: 1.5rem;">
+                        <div class="form-group">
+                            <label for="email" style="font-weight: 500; color: var(--text-dark);">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required style="border: 1px solid var(--border); padding: 0.75rem; border-radius: var(--radius-sm); width: 100%; font-family: var(--font-sans);">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" style="font-weight: 500; color: var(--text-dark);">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required style="border: 1px solid var(--border); padding: 0.75rem; border-radius: var(--radius-sm); width: 100%; font-family: var(--font-sans);">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 1.5rem;">
+                        <label for="timeline" style="font-weight: 500; color: var(--text-dark);">When are you looking to buy?</label>
+                        <select id="timeline" name="timeline" style="border: 1px solid var(--border); padding: 0.75rem; border-radius: var(--radius-sm); width: 100%; font-family: var(--font-sans); background: var(--bg-white);">
+                            <option value="ASAP">ASAP (1-3 months)</option>
+                            <option value="3-6 months">3-6 months</option>
+                            <option value="6-12+ months">6-12+ months</option>
+                            <option value="Just browsing">Just browsing</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox-group" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+                        <input type="checkbox" id="compliance_opt_in" name="compliance_opt_in" required>
+                        <label for="compliance_opt_in" class="compliance-text">By checking this box, I agree by electronic signature to the Electronic Disclosure Consent Agreement; to receive recurring marketing communication from Michael Risser, including auto-dialed calls, texts, and artificial/prerecorded voice messages (message frequency varies; data rates may apply; reply "STOP" to opt-out of texts or "HELP" for assistance); and to the Terms of Service and Privacy Policy of this website. Consent not required to make a purchase. I understand that I can call 610-348-7654 to obtain direct assistance.</label>
+                    </div>
+                    
+                    <input type="hidden" name="inquiry_type" value="buying">
+
+                    <!-- Turnstile Widget -->
+                    <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY_HERE" data-theme="light" data-appearance="interaction-only" style="position: absolute; opacity: 0; pointer-events: none;"></div>
+                    
+                    <button type="submit" class="btn-dark" style="width: 100%; justify-content: center; padding: 1rem; font-size: 1.1rem;">Submit Details <span>↗</span></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div id="global-footer-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>
