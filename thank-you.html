@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="10;url=index.html">
+    <title>Thank You! | Aaron Peskowitz Real Estate | eXp Realty</title>
+    <meta name="description" content="Thank you for contacting Aaron Peskowitz Real Estate. Your request has been received and we will contact you shortly.">
+    <!-- DESIGNED & DEVELOPED by Leads Pilots (www.leadspilots.com) & JASS Solutions (www.jass-solutions.com) -->
+    <link rel="stylesheet" href="css/styles.css?v=thankyou1">
+    <link rel="icon" type="image/png" href="assets/images/logo_icon.png">
+    <style>
+        .thankyou-hero {
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 1.5rem 5rem;
+            background-color: var(--bg-primary);
+        }
+        .thankyou-card {
+            max-width: 680px;
+            background: var(--bg-white);
+            border: 1px solid var(--border-dark);
+            border-radius: var(--radius-md);
+            padding: 3.5rem 2.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .success-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(34, 197, 94, 0.12);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #4ade80;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.5rem;
+        }
+        .thankyou-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            color: var(--off-white);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .thankyou-desc {
+            color: #a1a1aa;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        .redirect-notice {
+            background: var(--bg-off);
+            border: 1px solid var(--border);
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            color: var(--off-white);
+            margin-bottom: 2.5rem;
+            display: inline-block;
+        }
+        .redirect-notice strong {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        .thankyou-actions {
+            display: flex;
+            gap: 1.25rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <header id="main-header">
+        <div class="nav-inner">
+            <a href="index.html" class="logo-brand">
+                <img src="assets/images/logo_icon.png" alt="Aaron Peskowitz Icon" class="logo-icon">
+                <img src="assets/images/logo_text.png" alt="Aaron Peskowitz Real Estate" class="logo-text">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-pill">Home</a></li>
+                    <li><a href="buy.html" class="nav-pill">Find Your Dream House</a></li>
+                    <li><a href="sell.html" class="nav-pill">Sell Your House</a></li>
+                    <li><a href="about.html" class="nav-pill">About</a></li>
+                    <li><a href="testimonials.html" class="nav-pill">Testimonials</a></li>
+                    <li><a href="contact.html" class="nav-pill">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="nav-cta">Book a consultation <span class="nav-cta-arrow">↗</span></a>
+            <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== THANK YOU HERO SECTION ===== -->
+    <main class="thankyou-hero">
+        <div class="thankyou-card">
+            <div class="success-badge">
+                <span>✓</span> Submission Received Successfully
+            </div>
+            <h1 class="thankyou-title">Thank You for Reaching Out!</h1>
+            <p class="thankyou-desc">Your message has been delivered to Aaron Peskowitz. We are reviewing your details and will be in touch with you very shortly.</p>
+            
+            <div class="redirect-notice">
+                <span>⏳ Redirecting to homepage in <strong id="countdown">10</strong> seconds...</span>
+            </div>
+
+            <div class="thankyou-actions">
+                <a href="index.html" class="nav-cta" style="padding: 0.9rem 2rem; font-size: 0.95rem;">Return to Homepage Now ↗</a>
+                <a href="tel:+13157969255" class="btn" style="background: var(--bg-primary); border: 1px solid var(--border-dark); color: var(--off-white); padding: 0.9rem 2rem; border-radius: var(--radius-sm); font-size: 0.95rem; text-decoration: none; font-weight: 600;">Call (315) 796-9255</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== GLOBAL FOOTER ===== -->
+    <div id="global-footer-container"></div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // 10-Second Countdown Timer & Automatic Redirect Script
+        (function() {
+            let seconds = 10;
+            const countdownEl = document.getElementById('countdown');
+            const timer = setInterval(() => {
+                seconds--;
+                if (countdownEl) {
+                    countdownEl.textContent = seconds;
+                }
+                if (seconds <= 0) {
+                    clearInterval(timer);
+                    window.location.href = "index.html";
+                }
+            }, 1000);
+        })();
+    </script>
+</body>
+</html>

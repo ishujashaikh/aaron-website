@@ -3,9 +3,9 @@
             <div class="footer-grid-5">
                 <div class="footer-col brand-col">
                     <div class="footer-brand">
-                        <a href="https://www.teslarealtygroup.com/agent-lists/detail/38/386" target="_blank" style="color: inherit; text-decoration: none;"><img src="assets/images/tesla-logo.png" alt="Tesla Realty Group" class="footer-logo"></a>
+                        <a href="index.html" style="text-decoration: none; display: inline-block;"><img src="assets/images/logo_full.png" alt="Aaron Peskowitz Real Estate" class="footer-logo"></a>
                     </div>
-                    <p class="footer-desc">Helping home buyers and sellers navigate the Pennsylvania real estate market with 38 years of proven expertise, unmatched negotiation skills, and a commitment to your success.</p>
+                    <p class="footer-desc">Helping home buyers and sellers navigate the New York real estate market with proven expertise, unmatched negotiation skills, and a commitment to your success.</p>
                 </div>
 
                 <!-- Column 2: Navigate -->
@@ -37,6 +37,7 @@
                     <ul class="footer-links">
                         <li><a href="privacy.html">Privacy Policy</a></li>
                         <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="fair-housing.html">Fair Housing Act</a></li>
                         <li><a href="sitemap.xml">Sitemap</a></li>
                     </ul>
                 </div>
@@ -45,9 +46,9 @@
                 <div class="footer-col">
                     <h4 class="footer-heading">Contact</h4>
                     <ul class="footer-contact-list">
-                        <li>941 N Providence Rd<br>Media, PA 19063</li>
-                        <li><a href="tel:+16103487654">(610) 348-7654</a> (Office)</li>
-                        <li><a href="mailto:mike@michaelrisser.com">mike@michaelrisser.com</a></li>
+                        <li>1000 7th North St<br>Liverpool, NY 13088</li>
+                        <li><a href="tel:+13157969255">(315) 796-9255</a> (Office)</li>
+                        <li><a href="mailto:therealaaronp@gmail.com">therealaaronp@gmail.com</a></li>
                         <li>Mon - Sat · 9 AM - 7 PM ET</li>
                     </ul>
                 </div>
@@ -55,8 +56,8 @@
             
             <div class="footer-bottom">
                 <p class="footer-disclaimer">Data provided is for the consumer's personal, non-commercial use and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. Information is deemed reliable but not guaranteed.</p>
-                <p class="copyright">Copyright &copy; 2026. Michael Risser. All rights reserved.</p>
-                <p class="footer-credit">Designed &amp; Developed by <a href="https://www.leadspilots.com" target="_blank" rel="noopener">Leads Pilots</a>, in collaboration with <a href="https://www.jass-solutions.com" target="_blank" rel="noopener">JASS Solutions</a></p>
+                <p class="copyright">Copyright &copy; 2026. Aaron Peskowitz. All rights reserved.</p>
+                <p class="footer-credit">Designed &amp; Developed by <a href="https://www.leadspilots.com/" target="_blank" rel="noopener" title="Real estate buyer &amp; seller appointments, CRM and Virtual Assistant support for licensed agents.">Leads Pilots (Real estate buyer &amp; seller appointments, CRM and Virtual Assistant support for licensed agents.)</a>, in collaboration with <a href="https://www.jass-solutions.com/" target="_blank" rel="noopener">JASS Solutions</a></p>
             </div>
         </div>
     </footer>

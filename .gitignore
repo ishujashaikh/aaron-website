@@ -1,0 +1,16 @@
+# Ignore lead CSV database files containing customer PII
+leads/*.csv
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs & Temporary Files
+*.log
+*.tmp
+*.swp
+
+# IDE Configurations
+.vscode/
+.idea/

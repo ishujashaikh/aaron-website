@@ -1,4 +1,10 @@
 RewriteEngine On
+
+# Error Documents
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+
+# Extensionless HTML URLs
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^\.]+)$ $1.html [NC,L]

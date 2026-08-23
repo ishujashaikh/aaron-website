@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Page Not Found | Aaron Peskowitz Real Estate | eXp Realty</title>
+    <meta name="description" content="The page you are looking for does not exist or has been moved. Explore Aaron Peskowitz Real Estate services in Liverpool, NY & Central NY.">
+    <!-- DESIGNED & DEVELOPED by Leads Pilots (www.leadspilots.com) & JASS Solutions (www.jass-solutions.com) -->
+    <link rel="stylesheet" href="css/styles.css?v=404_v1">
+    <link rel="icon" type="image/png" href="assets/images/logo_icon.png">
+    <style>
+        .error-hero {
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 1.5rem 5rem;
+            background-color: var(--bg-primary);
+        }
+        .error-card {
+            max-width: 650px;
+            background: var(--bg-white);
+            border: 1px solid var(--border-dark);
+            border-radius: var(--radius-md);
+            padding: 3.5rem 2.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .error-code {
+            font-family: var(--font-serif);
+            font-size: clamp(4rem, 10vw, 7rem);
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .error-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            color: var(--off-white);
+            margin-bottom: 1rem;
+        }
+        .error-desc {
+            color: #a1a1aa;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+        .error-actions {
+            display: flex;
+            gap: 1.25rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <header id="main-header">
+        <div class="nav-inner">
+            <a href="index.html" class="logo-brand">
+                <img src="assets/images/logo_icon.png" alt="Aaron Peskowitz Icon" class="logo-icon">
+                <img src="assets/images/logo_text.png" alt="Aaron Peskowitz Real Estate" class="logo-text">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-pill">Home</a></li>
+                    <li><a href="buy.html" class="nav-pill">Find Your Dream House</a></li>
+                    <li><a href="sell.html" class="nav-pill">Sell Your House</a></li>
+                    <li><a href="about.html" class="nav-pill">About</a></li>
+                    <li><a href="testimonials.html" class="nav-pill">Testimonials</a></li>
+                    <li><a href="contact.html" class="nav-pill">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="nav-cta">Book a consultation <span class="nav-cta-arrow">↗</span></a>
+            <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== 404 HERO SECTION ===== -->
+    <main class="error-hero">
+        <div class="error-card">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Page Not Found</h1>
+            <p class="error-desc">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+            <div class="error-actions">
+                <a href="index.html" class="nav-cta" style="padding: 0.9rem 2rem; font-size: 0.95rem;">Return to Homepage ↗</a>
+                <a href="contact.html" class="btn" style="background: var(--bg-primary); border: 1px solid var(--border-dark); color: var(--off-white); padding: 0.9rem 2rem; border-radius: var(--radius-sm); font-size: 0.95rem; text-decoration: none; font-weight: 600;">Contact Us</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== GLOBAL FOOTER ===== -->
+    <div id="global-footer-container"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

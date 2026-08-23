@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michael Risser | Pennsylvania's Premier Associate Broker</title>
-    <meta name="description" content="Michael Risser is a top-producing Associate Broker serving Pennsylvania. Find your dream home or sell for top dollar with 38 years of proven expertise.">
-    <meta name="keywords" content="Michael Risser, Real Estate, Associate Broker, Pennsylvania, Chester County, Delaware County, Bucks County, Montgomery County">
+    <title>Aaron Peskowitz | New York's Premier Associate Broker | eXp Realty</title>
+    <meta name="description" content="Aaron Peskowitz is a top-producing Associate Broker with eXp Realty serving Liverpool, NY and surrounding areas. Find your dream home or sell for top dollar.">
+    <meta name="keywords" content="Aaron Peskowitz, Real Estate, Associate Broker, eXp Realty, Liverpool NY, New York, Syracuse, Onondaga County">
     <!-- DESIGNED & DEVELOPED by Leads Pilots (www.leadspilots.com) & JASS Solutions (www.jass-solutions.com) -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=mobilemenu1">
+    <link rel="icon" type="image/png" href="assets/images/logo_icon.png">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
@@ -15,7 +16,10 @@
     <!-- ===== NAVIGATION ===== -->
     <header id="main-header">
         <div class="nav-inner">
-            <a href="/" class="logo">Michael<span>Risser</span></a>
+            <a href="index.html" class="logo-brand">
+                <img src="assets/images/logo_icon.png" alt="Aaron Peskowitz Icon" class="logo-icon">
+                <img src="assets/images/logo_text.png" alt="Aaron Peskowitz Real Estate" class="logo-text">
+            </a>
             <nav class="main-nav">
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-pill active">Home</a></li>
@@ -23,20 +27,24 @@
                     <li><a href="sell.html" class="nav-pill">Sell Your House</a></li>
                     <li><a href="about.html" class="nav-pill">About</a></li>
                     <li><a href="testimonials.html" class="nav-pill">Testimonials</a></li>
+                    <li><a href="contact.html" class="nav-pill">Contact</a></li>
                 </ul>
             </nav>
             <a href="contact.html" class="nav-cta">Book a consultation <span class="nav-cta-arrow">↗</span></a>
+            <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
     </header>
 
     <!-- ===== HERO ===== -->
-    <section class="hero" id="home">
-        <div class="hero-inner">
-            <!-- Left: Text -->
-            <div class="hero-text">
-                <span class="label-pill">Licensed Since 1988 · <a href="https://www.teslarealtygroup.com/agent-lists/detail/38/386" target="_blank" style="color: inherit; text-decoration: none;">Tesla Realty Group</a></span>
-                <h1>Your trusted partner in Pennsylvania real estate</h1>
-                <p class="hero-sub">38 years of negotiation expertise and a commitment to your success — across Chester, Delaware, Bucks &amp; Montgomery Counties.</p>
+    <section class="hero hero-fullscreen" id="home">
+        <div class="hero-inner-fullscreen">
+            <div class="hero-text-fullscreen">
+                <h1>Your trusted partner in New York real estate</h1>
+                <p class="hero-sub">Proven negotiation expertise and a commitment to your success — across Liverpool, Syracuse &amp; Central New York.</p>
                 <div class="hero-service-pills">
                     <a href="buy.html" class="service-pill" style="text-decoration: none; color: inherit;">Find Your Dream House</a>
                     <a href="sell.html" class="service-pill" style="text-decoration: none; color: inherit;">Sell Your House</a>
@@ -44,17 +52,7 @@
                 </div>
                 <div class="hero-ctas">
                     <a href="#services" class="btn-dark">Our Services <span>↗</span></a>
-                    <a href="about.html" class="btn-ghost">Meet Michael</a>
-                </div>
-            </div>
-
-            <!-- Right: Image -->
-            <div class="hero-image-wrap">
-                <img src="assets/images/hero.png" alt="Luxury Pennsylvania Home" class="hero-img">
-                <!-- Floating stat card -->
-                <div class="hero-float-card">
-                    <span class="float-card-num">500+</span>
-                    <span class="float-card-label">Properties Sold</span>
+                    <a href="about.html" class="btn-ghost">Meet Aaron</a>
                 </div>
             </div>
         </div>
@@ -64,9 +62,9 @@
     <section class="stats-bar">
         <div class="stats-inner">
             <div class="stat-col">
-                <div class="stat-num">38+</div>
+                <div class="stat-num">4+</div>
                 <div class="stat-unit">Years Experience</div>
-                <div class="stat-desc">Licensed since 1988</div>
+                <div class="stat-desc">Proven Track Record</div>
             </div>
             <div class="stat-sep"></div>
             <div class="stat-col">
@@ -76,15 +74,15 @@
             </div>
             <div class="stat-sep"></div>
             <div class="stat-col">
-                <div class="stat-num">$1M+</div>
-                <div class="stat-unit">Hall of Fame</div>
-                <div class="stat-desc">RE/MAX Hall of Fame inductee</div>
+                <div class="stat-num">5.0 ★</div>
+                <div class="stat-unit">Top Rated</div>
+                <div class="stat-desc">5-Star Client Reviews</div>
             </div>
             <div class="stat-sep"></div>
             <div class="stat-col">
-                <div class="stat-num">7</div>
-                <div class="stat-unit">PA Counties</div>
-                <div class="stat-desc">Served across Pennsylvania</div>
+                <div class="stat-num">CNY</div>
+                <div class="stat-unit">Service Area</div>
+                <div class="stat-desc">Liverpool, Syracuse &amp; Onondaga</div>
             </div>
         </div>
     </section>
@@ -94,7 +92,6 @@
         <div class="process-inner">
             <!-- Left -->
             <div class="process-text">
-                <span class="label-pill">How I work</span>
                 <h2>I help clients make <strong>confident, educated</strong> real estate decisions</h2>
                 <p class="process-tagline">From first conversation to closing day</p>
 
@@ -124,7 +121,7 @@
 
             <!-- Right: Image + description -->
             <div class="process-media">
-                <img src="assets/images/headshot_desk.jpg" alt="Michael Risser, Associate Broker" class="process-img">
+                <img src="assets/images/headshot_desk.jpg" alt="Aaron Peskowitz, Associate Broker" class="process-img">
                 <div class="process-caption">
                     <p>My team transforms every detail into a seamless, profitable real estate transaction. I provide the strategy, market insight, and hands-on guidance to bring your goals to life.</p>
                     <a href="about.html" class="btn-ghost-dark">Read full biography →</a>
@@ -146,7 +143,7 @@
                         <h3 style="text-align: center; font-size: 2.2rem; width: 100%;">For Buyers</h3>
                     </div>
                     <p class="service-tagline">"A home as unique as you are."</p>
-                    <p class="service-body">I guarantee to save you money when you retain me as your Buyer's Agent. Over the last 38 years, my contract negotiating skills have been sharpened in every type of market condition.</p>
+                    <p class="service-body">I guarantee to save you money when you retain me as your Buyer's Agent. Over the last 4 years, my contract negotiating skills have been sharpened in every type of market condition.</p>
                     <a href="buy.html" class="service-link">Find Your Dream House ↗</a>
                 </div>
                 <div class="service-card" style="text-align: center;">
@@ -174,9 +171,9 @@
                 <button class="carousel-btn prev-btn">❮</button>
                 <div class="testi-carousel portfolio-carousel">
                     <!-- Slide -->
-                    <a href="https://www.zillow.com/homedetails/55-Kirk-Ln-Media-PA-19063/9419746_zpid/" target="_blank" class="property-card testi-slide" style="display: block; text-decoration: none; color: inherit; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); box-shadow: none;">
+                    <a href="#" target="_blank" class="property-card testi-slide" style="display: block; text-decoration: none; color: inherit; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); box-shadow: none;">
                         <div class="property-img-wrap" style="position: relative;">
-                            <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="55 Kirk Ln, Media, PA 19063" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+                            <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="123 Lorem Ipsum Way, Liverpool, NY 13088" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: var(--radius-md) var(--radius-md) 0 0;">
                             <div class="property-pills" style="position: absolute; bottom: 1rem; left: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: flex-start; justify-content: flex-start;">
                                 <span class="prop-pill" style="background: rgba(255,255,255,0.9); color: var(--text-dark); padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; width: max-content;">Buyer</span>
                                 <span class="prop-pill" style="background: var(--accent); color: white; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; width: max-content;">Sold 2 months ago</span>
@@ -186,15 +183,15 @@
                             <div>
                                 <h4 style="font-size: 1.5rem; margin-bottom: 0.25rem; color: white;">$406,000</h4>
                                 <p style="color: rgba(255,255,255,0.8); margin-bottom: 0.5rem; font-weight: 500;">3 bd · 2 ba · 1,120 sqft</p>
-                                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">55 Kirk Ln, Media, PA 19063</p>
+                                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">123 Lorem Ipsum Way, Liverpool, NY 13088</p>
                             </div>
                             <span class="prop-link" style="color: var(--accent); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-top: auto;">More details <span class="prop-arrow">↗</span></span>
                         </div>
                     </a>
                     <!-- Slide -->
-                    <a href="https://www.zillow.com/homedetails/1988-Chestnut-Hill-Rd-Mohnton-PA-19540/8913123_zpid/" target="_blank" class="property-card testi-slide" style="display: block; text-decoration: none; color: inherit; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); box-shadow: none;">
+                    <a href="#" target="_blank" class="property-card testi-slide" style="display: block; text-decoration: none; color: inherit; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); box-shadow: none;">
                         <div class="property-img-wrap" style="position: relative;">
-                            <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="1988 Chestnut Hill Rd, Mohnton, PA 19540" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+                            <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="456 Lorem Ipsum Ave, Syracuse, NY 13202" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: var(--radius-md) var(--radius-md) 0 0;">
                             <div class="property-pills" style="position: absolute; bottom: 1rem; left: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: flex-start; justify-content: flex-start;">
                                 <span class="prop-pill" style="background: rgba(255,255,255,0.9); color: var(--text-dark); padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; width: max-content;">Buyer</span>
                                 <span class="prop-pill" style="background: var(--accent); color: white; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; width: max-content;">Sold 2 months ago</span>
@@ -204,15 +201,15 @@
                             <div>
                                 <h4 style="font-size: 1.5rem; margin-bottom: 0.25rem; color: white;">$404,000</h4>
                                 <p style="color: rgba(255,255,255,0.8); margin-bottom: 0.5rem; font-weight: 500;">3 bd · 2 ba · 1,350 sqft</p>
-                                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">1988 Chestnut Hill Rd, Mohnton, PA 19540</p>
+                                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">456 Lorem Ipsum Ave, Syracuse, NY 13202</p>
                             </div>
                             <span class="prop-link" style="color: var(--accent); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-top: auto;">More details <span class="prop-arrow">↗</span></span>
                         </div>
                     </a>
                     <!-- Slide -->
-                    <a href="https://www.zillow.com/homedetails/201-Emerald-Ln-Media-PA-19063/9414809_zpid/" target="_blank" class="property-card testi-slide" style="display: block; text-decoration: none; color: inherit; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); box-shadow: none;">
+                    <a href="#" target="_blank" class="property-card testi-slide" style="display: block; text-decoration: none; color: inherit; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); box-shadow: none;">
                         <div class="property-img-wrap" style="position: relative;">
-                            <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="201 Emerald Ln, Media, PA 19063" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+                            <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="789 Lorem Ipsum Rd, Cicero, NY 13039" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: var(--radius-md) var(--radius-md) 0 0;">
                             <div class="property-pills" style="position: absolute; bottom: 1rem; left: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: flex-start; justify-content: flex-start;">
                                 <span class="prop-pill" style="background: rgba(255,255,255,0.9); color: var(--text-dark); padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; width: max-content;">Buyer</span>
                                 <span class="prop-pill" style="background: var(--accent); color: white; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; width: max-content;">Sold 3 months ago</span>
@@ -222,15 +219,15 @@
                             <div>
                                 <h4 style="font-size: 1.5rem; margin-bottom: 0.25rem; color: white;">$315,000</h4>
                                 <p style="color: rgba(255,255,255,0.8); margin-bottom: 0.5rem; font-weight: 500;">3 bd · 2 ba · 1,224 sqft</p>
-                                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">201 Emerald Ln, Media, PA 19063</p>
+                                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">789 Lorem Ipsum Rd, Cicero, NY 13039</p>
                             </div>
                             <span class="prop-link" style="color: var(--accent); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-top: auto;">More details <span class="prop-arrow">↗</span></span>
                         </div>
                     </a>
                     <!-- Slide -->
-                    <a href="https://www.zillow.com/homedetails/21-Beaver-Run-Rd-Downingtown-PA-19335/52643830_zpid/" target="_blank" class="property-card testi-slide" style="display: block; text-decoration: none; color: inherit; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); box-shadow: none;">
+                    <a href="#" target="_blank" class="property-card testi-slide" style="display: block; text-decoration: none; color: inherit; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); box-shadow: none;">
                         <div class="property-img-wrap" style="position: relative;">
-                            <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="21 Beaver Run Rd, Downingtown, PA 19335" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+                            <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="101 Lorem Ipsum Blvd, Manlius, NY 13104" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: var(--radius-md) var(--radius-md) 0 0;">
                             <div class="property-pills" style="position: absolute; bottom: 1rem; left: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: flex-start; justify-content: flex-start;">
                                 <span class="prop-pill" style="background: rgba(255,255,255,0.9); color: var(--text-dark); padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; width: max-content;">Seller</span>
                                 <span class="prop-pill" style="background: var(--accent); color: white; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; width: max-content;">Sold 4 months ago</span>
@@ -240,15 +237,15 @@
                             <div>
                                 <h4 style="font-size: 1.5rem; margin-bottom: 0.25rem; color: white;">$580,000</h4>
                                 <p style="color: rgba(255,255,255,0.8); margin-bottom: 0.5rem; font-weight: 500;">3 bd · 4 ba · 3,052 sqft</p>
-                                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">21 Beaver Run Rd, Downingtown, PA 19335</p>
+                                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">101 Lorem Ipsum Blvd, Manlius, NY 13104</p>
                             </div>
                             <span class="prop-link" style="color: var(--accent); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-top: auto;">More details <span class="prop-arrow">↗</span></span>
                         </div>
                     </a>
                     <!-- Slide -->
-                    <a href="https://www.zillow.com/homedetails/509-Kolb-Rd-Spring-City-PA-19475/178127480_zpid/" target="_blank" class="property-card testi-slide" style="display: block; text-decoration: none; color: inherit; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); box-shadow: none;">
+                    <a href="#" target="_blank" class="property-card testi-slide" style="display: block; text-decoration: none; color: inherit; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); box-shadow: none;">
                         <div class="property-img-wrap" style="position: relative;">
-                            <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="509 Kolb Rd, Spring City, PA 19475" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+                            <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="202 Lorem Ipsum Dr, Fayetteville, NY 13066" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: var(--radius-md) var(--radius-md) 0 0;">
                             <div class="property-pills" style="position: absolute; bottom: 1rem; left: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: flex-start; justify-content: flex-start;">
                                 <span class="prop-pill" style="background: rgba(255,255,255,0.9); color: var(--text-dark); padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; width: max-content;">Buyer</span>
                                 <span class="prop-pill" style="background: var(--accent); color: white; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; width: max-content;">Sold 4 months ago</span>
@@ -258,15 +255,15 @@
                             <div>
                                 <h4 style="font-size: 1.5rem; margin-bottom: 0.25rem; color: white;">$780,000</h4>
                                 <p style="color: rgba(255,255,255,0.8); margin-bottom: 0.5rem; font-weight: 500;">4 bd · 4 ba · 3,023 sqft</p>
-                                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">509 Kolb Rd, Spring City, PA 19475</p>
+                                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">202 Lorem Ipsum Dr, Fayetteville, NY 13066</p>
                             </div>
                             <span class="prop-link" style="color: var(--accent); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-top: auto;">More details <span class="prop-arrow">↗</span></span>
                         </div>
                     </a>
                     <!-- Slide -->
-                    <a href="https://www.zillow.com/homedetails/1004-Turner-Ave-Drexel-Hill-PA-19026/9354734_zpid/" target="_blank" class="property-card testi-slide" style="display: block; text-decoration: none; color: inherit; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); box-shadow: none;">
+                    <a href="#" target="_blank" class="property-card testi-slide" style="display: block; text-decoration: none; color: inherit; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); box-shadow: none;">
                         <div class="property-img-wrap" style="position: relative;">
-                            <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="1004 Turner Ave, Drexel Hill, PA 19026" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+                            <img src="https://placehold.co/600x400/1e293b/94a3b8?text=Property+Placeholder" alt="303 Lorem Ipsum Ln, Baldwinsville, NY 13027" loading="lazy" style="width: 100%; height: auto; object-fit: cover; border-radius: var(--radius-md) var(--radius-md) 0 0;">
                             <div class="property-pills" style="position: absolute; bottom: 1rem; left: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: flex-start; justify-content: flex-start;">
                                 <span class="prop-pill" style="background: rgba(255,255,255,0.9); color: var(--text-dark); padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; width: max-content;">Seller</span>
                                 <span class="prop-pill" style="background: var(--accent); color: white; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; width: max-content;">Sold 6 months ago</span>
@@ -276,13 +273,13 @@
                             <div>
                                 <h4 style="font-size: 1.5rem; margin-bottom: 0.25rem; color: white;">$355,000</h4>
                                 <p style="color: rgba(255,255,255,0.8); margin-bottom: 0.5rem; font-weight: 500;">3 bd · 3 ba · 2,198 sqft</p>
-                                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">1004 Turner Ave, Drexel Hill, PA 19026</p>
+                                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem;">303 Lorem Ipsum Ln, Baldwinsville, NY 13027</p>
                             </div>
                             <span class="prop-link" style="color: var(--accent); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-top: auto;">More details <span class="prop-arrow">↗</span></span>
                         </div>
                     </a>
                     <!-- Final Slide -->
-                    <a href="https://www.zillow.com/profile/MikeRisser1" target="_blank" class="property-card testi-slide" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; background: rgba(255,255,255,0.05); border: 2px dashed rgba(255,255,255,0.2); padding: 3rem; box-shadow: none;">
+                    <a href="#" target="_blank" class="property-card testi-slide" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; background: rgba(255,255,255,0.05); border: 2px dashed rgba(255,255,255,0.2); padding: 3rem; box-shadow: none;">
                         <h4 style="color: white; font-size: 1.5rem; margin-bottom: 1rem; text-align: center;">See More on Zillow</h4>
                         <span class="btn-dark" style="background: var(--accent); color: white;">View Profile <span class="prop-arrow">↗</span></span>
                     </a>
@@ -296,7 +293,7 @@
     <section class="testimonials" id="testimonials">
         <div class="container" style="text-align: center;">
             
-            <h2 style="font-family: var(--font-serif); font-size: 2.5rem; color: var(--text-dark); margin: 1.5rem 0 3rem 0;">What Pennsylvania Buyers & Sellers Are Saying</h2>
+            <h2 style="font-family: var(--font-serif); font-size: 2.5rem; color: var(--text-dark); margin: 1.5rem 0 3rem 0;">What Our Buyers & Sellers Are Saying</h2>
             
             <div class="testi-carousel-wrapper">
                 <button class="carousel-btn prev-btn">❮</button>
@@ -304,73 +301,73 @@
                     <!-- Slide 1 -->
                     <div class="testi-slide">
                         <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
-                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Mike was an amazing agent, my fiancé and I were buying our first home and mike walked us through every step. He had our best interests at heart the entire time. He wasn’t just looking to sell us a house, he wanted to make sure we found the perfect house for our young family."</p>
-                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Michael Geyer<br><span style="font-weight: 400; font-size: 0.8rem;">Havertown, PA</span></p>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Client Reviewer<br><span style="font-weight: 400; font-size: 0.8rem;">Liverpool, NY</span></p>
                     </div>
                     <!-- Slide 2 -->
                     <div class="testi-slide">
                         <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
-                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Mike was an awesome realtor! He helped me sell and buy within my requested time frame. With his cross listings, my home was on the market for only 14 days before it was snagged. He is very knowledgeable and helpful with is advice. I'll be referring him to all my friends and family."</p>
-                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- mochabrown55<br><span style="font-weight: 400; font-size: 0.8rem;">Bought and sold a home</span></p>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Client Reviewer<br><span style="font-weight: 400; font-size: 0.8rem;">Syracuse, NY</span></p>
                     </div>
                     <!-- Slide 3 -->
                     <div class="testi-slide">
                         <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
-                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"As first time home buyers, we lucked out with Mike. He was very helpful and educational from the beginning. Our first meeting did not even involve any showings. Instead, he sat down with us and gave a thorough introduction of what we needed to know and what to expect."</p>
-                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- user94500961<br><span style="font-weight: 400; font-size: 0.8rem;">Glen mills, PA</span></p>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Client Reviewer<br><span style="font-weight: 400; font-size: 0.8rem;">Cicero, NY</span></p>
                     </div>
                     <!-- Slide 4 -->
                     <div class="testi-slide">
                         <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
-                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"mike isn't just a realtor, he is an honest, trustworthy and valuable person to know. he has integrity and if you need him, you can count on him. go with mike, he won't let you down."</p>
-                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- tspreng<br><span style="font-weight: 400; font-size: 0.8rem;">Sold a home in PA 18974</span></p>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Integer in sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Client Reviewer<br><span style="font-weight: 400; font-size: 0.8rem;">Manlius, NY</span></p>
                     </div>
                     <!-- Slide 5 -->
                     <div class="testi-slide">
                         <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
-                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Mike is dedicated to finding you the right house for you and your family. He is a very patient and thoughtful person and will not try to sell you something that you don’t need or want. His knowledge about the real estate process and how he has advised me has put me at ease."</p>
-                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- donnacolsher<br><span style="font-weight: 400; font-size: 0.8rem;">Philadelphia, PA</span></p>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras tellus. Praesent justo dolor, lobortis quis, lobortis dignissim, pulvinar ac, lorem."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Client Reviewer<br><span style="font-weight: 400; font-size: 0.8rem;">Fayetteville, NY</span></p>
                     </div>
                     <!-- Slide 6 -->
                     <div class="testi-slide">
                         <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
-                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Mike is a great person and agent. It was very tough for us when we moved and this area last year. However, Mike helped make our transition smoother. He is extremely honest and patient. He treated us like an extended family. We highly recommend him as an agent!"</p>
-                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Danielle Pierre<br><span style="font-weight: 400; font-size: 0.8rem;">Delaware County, PA</span></p>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce id purpure. Ut id nisl quis enim dignissim sagittis. Etiam sollicitudin, ipsum eu pulvinar rutrum."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Client Reviewer<br><span style="font-weight: 400; font-size: 0.8rem;">Baldwinsville, NY</span></p>
                     </div>
                     <!-- Slide 7 -->
                     <div class="testi-slide">
                         <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
-                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"I worked with Mike several time. He know Real Estate. Helped me sell my mother-in- law home and all so helped with my daughter purchase of her home. Mike is a great person to work with. He gets things done efficiently. You cannot go wrong with Mike Risser."</p>
-                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- dardean<br><span style="font-weight: 400; font-size: 0.8rem;">Bought and sold a home</span></p>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Client Reviewer<br><span style="font-weight: 400; font-size: 0.8rem;">Clay, NY</span></p>
                     </div>
                     <!-- Slide 8 -->
                     <div class="testi-slide">
                         <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
-                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Mike helped us sell our home in a very short period of time. He is very knowledgeable about the industry and we felt very comfortable. I would recommend him to any one looking to buy or sell their home."</p>
-                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- raf7006<br><span style="font-weight: 400; font-size: 0.8rem;">Newtown square, PA</span></p>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan portitor, facilisis luctus."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Client Reviewer<br><span style="font-weight: 400; font-size: 0.8rem;">Dewitt, NY</span></p>
                     </div>
                     <!-- Slide 9 -->
                     <div class="testi-slide">
                         <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
-                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Mike Risser is very knowledgable about the Chester County/Delaware County area and was able to help us identify several great homes and make the decision on purchasing the perfect home."</p>
-                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- smc727<br><span style="font-weight: 400; font-size: 0.8rem;">Thornton, PA</span></p>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Client Reviewer<br><span style="font-weight: 400; font-size: 0.8rem;">Camillus, NY</span></p>
                     </div>
                     <!-- Slide 10 -->
                     <div class="testi-slide">
                         <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
-                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Mike is a seasoned pro. He has been in this business for a long time and it shows. He is extremely patient and easy to work with. He helped us find the perfect place for our first home and negotiated a great deal. Overall, he made the home buying process easy and enjoyable!"</p>
-                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- JenniferMannion<br><span style="font-weight: 400; font-size: 0.8rem;">Bought a home in PA</span></p>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Sed adipiscing ornare risus. Morbi nec metus. Phasellus blandit leo ut odio. Maecenas vestibulum mollis diam. Pellentesque ut neque. Pellentesque habitant morbi tristique senectus."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Client Reviewer<br><span style="font-weight: 400; font-size: 0.8rem;">Skaneateles, NY</span></p>
                     </div>
                     <!-- Slide 11 -->
                     <div class="testi-slide">
                         <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
-                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Michael sold me a house in 2001, helped me sell it for a whopping profit in 2012 and is currently aiding me in finding a new nest now. One of Michael's greatest strengths is his understanding of value in a particular area--for either buyer or seller, he is spot on regarding a home's worth."</p>
-                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- user33352753<br><span style="font-weight: 400; font-size: 0.8rem;">West chester, PA</span></p>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce feugiat malesuada odio. Morbi mattis ullamcorper velit. Phasellus gravida semper nisi. Nullam vel sem. Pellentesque libero."</p>
+                        <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- Client Reviewer<br><span style="font-weight: 400; font-size: 0.8rem;">Central NY Area</span></p>
                     </div>
                     <!-- Slide 12 -->
                     <div class="testi-slide">
                         <div class="stars" style="color: var(--accent); margin-bottom: 1rem; font-size: 1.25rem;">★★★★★</div>
-                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"We listed our house right after the New Year in a poor economy. We were thrilled to have an offer within 30 days. Mike was always there with an answer to a question or information we needed for the quick turnaround. Everything went through like clockwork!"</p>
+                        <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic;">"We listed our house right after the New Year in a poor economy. We were thrilled to have an offer within 30 days. Aaron was always there with an answer to a question or information we needed for the quick turnaround. Everything went through like clockwork!"</p>
                         <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">- carol covert<br><span style="font-weight: 400; font-size: 0.8rem;">Elverson, PA</span></p>
                     </div>
                 </div>
@@ -390,10 +387,10 @@
                 <h2>Let's talk <strong>real estate</strong></h2>
                 <p class="contact-intro">Ready to buy, sell, or just explore your options? I'm here to give you the unbiased information you need.</p>
                 <div class="contact-details">
-                    <a href="tel:+16103487654" class="contact-phone">610.348.7654</a>
+                    <a href="tel:+13157969255" class="contact-phone">(315) 796-9255</a>
                     <p class="contact-line">Mon – Sat · 9 AM – 7 PM ET</p>
-                    <p class="contact-line">941 N Providence Rd, Media, PA 19063</p>
-                    <a href="mailto:mike@michaelrisser.com" class="contact-line contact-email">mike@michaelrisser.com</a>
+                    <p class="contact-line">1000 7th North St, Liverpool, NY 13088</p>
+                    <a href="mailto:therealaaronp@gmail.com" class="contact-line contact-email">therealaaronp@gmail.com</a>
                 </div>
             </div>
 
@@ -432,7 +429,7 @@
                     </div>
                     <div class="checkbox-group">
                         <input type="checkbox" id="compliance_opt_in" name="compliance_opt_in" required>
-                        <label for="compliance_opt_in" class="compliance-text">By checking this box, I agree by electronic signature to the Electronic Disclosure Consent Agreement; to receive recurring marketing communication from Michael Risser, including auto-dialed calls, texts, and artificial/prerecorded voice messages (message frequency varies; data rates may apply; reply "STOP" to opt-out of texts or "HELP" for assistance); and to the Terms of Service and Privacy Policy of this website. Consent not required to make a purchase. I understand that I can call 610-348-7654 to obtain direct assistance.</label>
+                        <label for="compliance_opt_in" class="compliance-text">By checking this box, I agree by electronic signature to the Electronic Disclosure Consent Agreement; to receive recurring marketing communication from Aaron Peskowitz, including auto-dialed calls, texts, and artificial/prerecorded voice messages (message frequency varies; data rates may apply; reply "STOP" to opt-out of texts or "HELP" for assistance); and to the Terms of Service and Privacy Policy of this website. Consent not required to make a purchase. I understand that I can call (315) 796-9255 to obtain direct assistance.</label>
                     </div>
                     <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY_HERE" data-theme="light" data-appearance="interaction-only" style="position: absolute; opacity: 0; pointer-events: none;"></div>
                     <button type="submit" class="btn-dark" style="width:100%;justify-content:center;">Submit Inquiry ↗</button>

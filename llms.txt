@@ -1,5 +1,22 @@
-# Michael Risser Real Estate
+# Aaron Peskowitz Real Estate
 
-> Michael Risser is an Associate Broker specializing in residential real estate across 6 Pennsylvania counties.
+> Aaron Peskowitz is an Associate Broker with eXp Realty specializing in residential real estate in Liverpool, NY and Central New York.
 
-This website serves as a lead generation landing page detailing Michael Risser's 38+ years of experience, RE/MAX Hall of Fame status, and services for buyers and sellers. It features a contact form for inquiries, client testimonials, and a portfolio of recent closings in Chester, Delaware, Bucks, Montgomery, Lancaster, and Berks counties.
+Aaron Peskowitz provides full-service home buyer and seller representation across Liverpool, NY, Syracuse, and Onondaga County.
+
+## Core Pages
+- [Home](https://aaronpeskowitz.com/index.html): Overview of real estate services, featured portfolio, and consultation options.
+- [Find Your Dream House](https://aaronpeskowitz.com/buy.html): Buyer representation services and home search tools.
+- [Sell Your House](https://aaronpeskowitz.com/sell.html): Seller representation and home evaluation services.
+- [About Aaron Peskowitz](https://aaronpeskowitz.com/about.html): Associate Broker credentials and local market experience.
+- [Client Testimonials](https://aaronpeskowitz.com/testimonials.html): Verified reviews from buyers and sellers.
+- [Contact](https://aaronpeskowitz.com/contact.html): Office location, phone number, and direct inquiry form.
+- [Frequently Asked Questions](https://aaronpeskowitz.com/faq.html): Real estate FAQs for New York buyers and sellers.
+
+## Legal & Compliance
+- [Privacy Policy](https://aaronpeskowitz.com/privacy.html): Data protection policies.
+- [Terms & Conditions](https://aaronpeskowitz.com/terms.html): Website usage terms and MLS data disclaimers.
+- [Fair Housing Act](https://aaronpeskowitz.com/fair-housing.html): New York State Equal Housing Opportunity commitment.
+
+## Full Context
+- [Full Context Documentation](https://aaronpeskowitz.com/llms-full.txt): Comprehensive business details, credentials, and service specifics.

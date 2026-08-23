@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    alert(data.message);
                     leadForm.reset();
+                    window.location.href = 'thank-you.html';
                 } else {
                     alert(data.message);
                 }
@@ -190,9 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    alert(data.message);
                     sellerLeadForm.reset();
                     if(typeof turnstile !== 'undefined') turnstile.reset();
+                    window.location.href = 'thank-you.html';
                 } else {
                     alert(data.message);
                 }
@@ -246,5 +246,30 @@ document.addEventListener("DOMContentLoaded", function() {
                 footerContainer.innerHTML = html;
             })
             .catch(error => console.error('Error loading footer:', error));
+    }
+
+    // Mobile navigation toggle
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const mainNav = document.querySelector('.main-nav');
+    if (mobileNavToggle && mainNav) {
+        mobileNavToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileNavToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!mobileNavToggle.contains(e.target) && !mainNav.contains(e.target)) {
+                mobileNavToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+            }
+        });
+
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+            });
+        });
     }
 });
