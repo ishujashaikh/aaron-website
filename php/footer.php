@@ -46,7 +46,7 @@
                 <div class="footer-col">
                     <h4 class="footer-heading">Contact</h4>
                     <ul class="footer-contact-list">
-                        <li>1000 7th North St<br>Liverpool, NY 13088</li>
+                        <li>Serving Chadwicks, NY and surrounding communities</li>
                         <li><a href="tel:+13157969255">(315) 796-9255</a> (Office)</li>
                         <li><a href="mailto:therealaaronp@gmail.com">therealaaronp@gmail.com</a></li>
                         <li>Mon - Sat · 9 AM - 7 PM ET</li>
