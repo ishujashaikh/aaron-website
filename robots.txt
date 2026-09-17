@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# Sitemaps & AI Context Endpoints
 Sitemap: https://aaronpeskowitz.com/sitemap.xml
+
+# Geographic Coverage Scope (Central New York):
+# Chadwicks, NY 13319 (Primary Base)
+# Utica, Herkimer, Sauquoit, New Hartford, Clinton, Remsen, Ilion, Mohawk, Little Falls, NY

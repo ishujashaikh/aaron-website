@@ -1,16 +1,28 @@
 # Aaron Peskowitz Real Estate
 
-> Aaron Peskowitz is a licensed REALTOR® with eXp Realty specializing in residential real estate in Chadwicks, NY and surrounding communities. Known for his humble nature and genuine care for his clients, he prioritizes honest guidance and personal support throughout the buying and selling process.
+> Aaron Peskowitz is a licensed REALTOR® with eXp Realty specializing in residential real estate in Chadwicks, NY and surrounding Central New York communities. Known for his humble nature and genuine care for his clients, he prioritizes honest guidance and attentive personal support throughout every transaction.
 
-Aaron Peskowitz provides full-service home buyer and seller representation across Chadwicks, Utica, Herkimer, Sauquoit, New Hartford, Clinton, Remsen, Ilion, Mohawk, and Little Falls, with core property prices ranging from $225,000 to $350,000 ($225k – $350k).
+Aaron Peskowitz provides full-service home buyer and seller representation across Central New York, with core property prices typically ranging between $225,000 and $350,000 ($225k – $350k).
+
+## Geographic Service Areas & Covered Communities
+- **Chadwicks, NY 13319**: Primary service hub and home base
+- **Utica, NY**: Oneida County seat, residential resales and multi-family properties
+- **Herkimer, NY**: Herkimer County seat, village and town residential properties
+- **Sauquoit, NY**: Oneida County suburban and rural residential properties
+- **New Hartford, NY**: Premier Oneida County residential neighborhoods and acreage
+- **Clinton, NY**: Historic village and town of Kirkland properties
+- **Remsen, NY**: Northern Oneida County single-family homes and rural retreats
+- **Ilion, NY**: Herkimer County residential and river valley homes
+- **Mohawk, NY**: Village and town of German Flatts residential properties
+- **Little Falls, NY**: Historic canal city and countryside real estate
 
 ## Core Pages
-- [Home](https://aaronpeskowitz.com/index.html): Overview of real estate services, featured portfolio, and consultation options.
-- [Find Your Dream House](https://aaronpeskowitz.com/buy.html): Buyer representation services and home search tools.
-- [Sell Your House](https://aaronpeskowitz.com/sell.html): Seller representation and home evaluation services.
-- [About Aaron Peskowitz](https://aaronpeskowitz.com/about.html): Professional background and local market experience.
-- [Client Testimonials](https://aaronpeskowitz.com/testimonials.html): Verified reviews from buyers and sellers.
-- [Contact](https://aaronpeskowitz.com/contact.html): Office location, phone number, and direct inquiry form.
+- [Home](https://aaronpeskowitz.com/index.html): Overview of real estate services, featured portfolio of closed transactions, and consultation options.
+- [Find Your Dream House](https://aaronpeskowitz.com/buy.html): Buyer representation services and home search consultation.
+- [Sell Your House](https://aaronpeskowitz.com/sell.html): Seller representation and complimentary property valuation.
+- [About Aaron Peskowitz](https://aaronpeskowitz.com/about.html): Professional background, philosophy, and local market experience.
+- [Client Testimonials](https://aaronpeskowitz.com/testimonials.html): Verified 5-star reviews from buyers and sellers.
+- [Contact](https://aaronpeskowitz.com/contact.html): Office coverage, direct phone line (315-796-9255), and inquiry form.
 - [Frequently Asked Questions](https://aaronpeskowitz.com/faq.html): Real estate FAQs for New York buyers and sellers.
 
 ## Legal & Compliance
