@@ -1,6 +1,6 @@
 # Aaron Peskowitz Real Estate
 
-> Aaron Peskowitz is an Associate Broker with eXp Realty specializing in residential real estate in Liverpool, NY and Central New York.
+> Aaron Peskowitz is a licensed REALTOR® with eXp Realty specializing in residential real estate in Liverpool, NY and Central New York.
 
 Aaron Peskowitz provides full-service home buyer and seller representation across Liverpool, NY, Syracuse, and Onondaga County.
 
@@ -8,7 +8,7 @@ Aaron Peskowitz provides full-service home buyer and seller representation acros
 - [Home](https://aaronpeskowitz.com/index.html): Overview of real estate services, featured portfolio, and consultation options.
 - [Find Your Dream House](https://aaronpeskowitz.com/buy.html): Buyer representation services and home search tools.
 - [Sell Your House](https://aaronpeskowitz.com/sell.html): Seller representation and home evaluation services.
-- [About Aaron Peskowitz](https://aaronpeskowitz.com/about.html): Associate Broker credentials and local market experience.
+- [About Aaron Peskowitz](https://aaronpeskowitz.com/about.html): Professional background and local market experience.
 - [Client Testimonials](https://aaronpeskowitz.com/testimonials.html): Verified reviews from buyers and sellers.
 - [Contact](https://aaronpeskowitz.com/contact.html): Office location, phone number, and direct inquiry form.
 - [Frequently Asked Questions](https://aaronpeskowitz.com/faq.html): Real estate FAQs for New York buyers and sellers.
