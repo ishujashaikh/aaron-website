@@ -1,6 +1,32 @@
 <?php
-// Set response headers
-header('Content-Type: application/json');
+// Detect AJAX vs direct POST submission
+$is_ajax = (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') 
+    || (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false);
+
+if ($is_ajax) {
+    header('Content-Type: application/json');
+}
+
+/**
+ * Universal response helper supporting both AJAX JSON and standard HTTP redirects
+ */
+function send_form_response($success, $message, $is_ajax) {
+    if ($is_ajax) {
+        http_response_code($success ? 200 : 400);
+        echo json_encode([
+            "status" => $success ? "success" : "error",
+            "message" => $message
+        ]);
+    } else {
+        if ($success) {
+            header("Location: ../thank-you.html");
+        } else {
+            http_response_code(400);
+            echo "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Submission Notice</title><meta name='viewport' content='width=device-width, initial-scale=1'><style>body{background:#09090b;color:#f4f4f0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;padding:20px;text-align:center;} .box{background:#18181b;padding:40px;border-radius:16px;border:1px solid #27272a;max-width:440px;box-shadow:0 20px 40px rgba(0,0,0,0.6);} h2{margin-top:0;font-family:Georgia,serif;} a{color:#f4f4f0;margin-top:20px;display:inline-block;text-decoration:underline;}</style></head><body><div class='box'><h2>Inquiry Notice</h2><p>" . htmlspecialchars($message) . "</p><a href='javascript:history.back()'>← Return to Form</a></div></body></html>";
+        }
+    }
+    exit;
+}
 
 // Check if request is POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -9,15 +35,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once __DIR__ . '/mailer.php';
     $config = file_exists(__DIR__ . '/config.php') ? require __DIR__ . '/config.php' : [];
 
-    // Cloudflare Turnstile Verification (active when secret key is provided)
+    // Cloudflare Turnstile Verification (active when secret key is provided and not placeholder)
     $turnstile_secret = $config['turnstile_secret'] ?? 'YOUR_TURNSTILE_SECRET_KEY_HERE';
     $turnstile_response = $_POST['cf-turnstile-response'] ?? '';
     
-    if (!empty($turnstile_secret) && $turnstile_secret !== 'YOUR_TURNSTILE_SECRET_KEY_HERE') {
+    $is_turnstile_active = !empty($turnstile_secret) 
+        && $turnstile_secret !== 'YOUR_TURNSTILE_SECRET_KEY_HERE' 
+        && strpos($turnstile_secret, 'YOUR_') !== 0;
+
+    if ($is_turnstile_active) {
         if (empty($turnstile_response)) {
-            http_response_code(400);
-            echo json_encode(["status" => "error", "message" => "Please complete the security check."]);
-            exit;
+            send_form_response(false, "Please complete the security check.", $is_ajax);
         }
         
         $verify_url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
@@ -31,7 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'http' => [
                 'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
                 'method'  => 'POST',
-                'content' => http_build_query($data)
+                'content' => http_build_query($data),
+                'timeout' => 5
             ]
         ];
         
@@ -41,9 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result !== FALSE) {
             $captcha_success = json_decode($result);
             if (!empty($captcha_success) && $captcha_success->success === false) {
-                http_response_code(400);
-                echo json_encode(["status" => "error", "message" => "Security verification failed. Please try again."]);
-                exit;
+                send_form_response(false, "Security verification failed. Please try again.", $is_ajax);
             }
         }
     }
@@ -64,9 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $phone_digits = substr($phone_digits, 1);
     }
     if (strlen($phone_digits) > 10) {
-        http_response_code(400);
-        echo json_encode(["status" => "error", "message" => "Phone number must not exceed 10 digits."]);
-        exit;
+        send_form_response(false, "Phone number must not exceed 10 digits.", $is_ajax);
     }
     if (strlen($phone_digits) === 10) {
         $phone = sprintf("(%s) %s-%s", substr($phone_digits, 0, 3), substr($phone_digits, 3, 3), substr($phone_digits, 6, 4));
@@ -76,9 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Validation
     if (empty($first_name) || empty($last_name) || empty($street_address) || empty($city) || empty($state) || empty($zip_code) || empty($phone) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        http_response_code(400);
-        echo json_encode(["status" => "error", "message" => "Please provide all required fields with valid information."]);
-        exit;
+        send_form_response(false, "Please provide all required fields with valid information.", $is_ajax);
     }
 
     // Load mailer and config
@@ -156,13 +179,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
     // Success Response
-    http_response_code(200);
-    echo json_encode(["status" => "success", "message" => "Thank you! Aaron Peskowitz will contact you very soon."]);
+    send_form_response(true, "Thank you! Aaron Peskowitz will contact you very soon.", $is_ajax);
 
 } else {
     // Not a POST request
-    http_response_code(403);
-    echo json_encode(["status" => "error", "message" => "There was a problem with your submission, please try again."]);
+    send_form_response(false, "There was a problem with your submission, please try again.", $is_ajax);
 }
 
 /**
@@ -208,7 +229,7 @@ function log_lead_to_csv($lead_type, $first_name, $last_name, $email, $phone, $d
                     'Property / Inquiry Details',
                     'Compliance Status',
                     'IP Address'
-                ]);
+                ], ',', '"', "\\");
             }
 
             // Write Lead Record
@@ -222,7 +243,7 @@ function log_lead_to_csv($lead_type, $first_name, $last_name, $email, $phone, $d
                 $details,
                 $compliance_status,
                 $_SERVER['REMOTE_ADDR'] ?? 'Unknown'
-            ]);
+            ], ',', '"', "\\");
 
             @flock($file, LOCK_UN);
         }

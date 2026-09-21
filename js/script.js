@@ -1,3 +1,30 @@
+// ===== Cloudflare Turnstile Safe Explicit Loader =====
+window.onloadTurnstileCallback = function() {
+    if (typeof turnstile === 'undefined') return;
+    const turnstileElements = document.querySelectorAll('.cf-turnstile');
+    turnstileElements.forEach(el => {
+        if (el.dataset.rendered) return;
+        const sitekey = el.getAttribute('data-sitekey');
+        if (sitekey && !sitekey.startsWith('YOUR_') && sitekey.trim() !== '') {
+            try {
+                turnstile.render(el, {
+                    sitekey: sitekey,
+                    theme: el.getAttribute('data-theme') || 'light',
+                    size: el.getAttribute('data-size') || 'invisible'
+                });
+                el.dataset.rendered = 'true';
+            } catch (err) {
+                console.warn('Turnstile initialization notice:', err);
+            }
+        }
+    });
+};
+
+// Auto-run if Turnstile is already loaded when script executes
+if (typeof turnstile !== 'undefined') {
+    window.onloadTurnstileCallback();
+}
+
 // ===== Responsive Favicon for Dark / Light Mode =====
 (function initResponsiveFavicon() {
     function updateFavicon() {
@@ -269,10 +296,15 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 if (data.status === 'success') {
                     sellerLeadForm.reset();
-                    if(typeof turnstile !== 'undefined') turnstile.reset();
+                    if (typeof turnstile !== 'undefined') {
+                        try { turnstile.reset(); } catch(err) {}
+                    }
                     window.location.href = 'thank-you.html';
                 } else {
                     alert(data.message);
+                    if (typeof turnstile !== 'undefined') {
+                        try { turnstile.reset(); } catch(err) {}
+                    }
                 }
             })
             .catch(error => {

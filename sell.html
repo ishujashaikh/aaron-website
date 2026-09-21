@@ -66,7 +66,7 @@
     <link rel="icon" type="image/webp" href="assets/images/logo_icon.webp" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/webp" href="assets/images/logo_icon_white.webp" media="(prefers-color-scheme: dark)">
     <!-- Cloudflare Turnstile API -->
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" async defer></script>
 </head>
 <body style="background-color: var(--bg-primary);">
     <header id="main-header">
@@ -178,7 +178,7 @@
             </div>
             <div class="sell-form-right">
                 <div class="sell-contact-form">
-                    <form id="sellerLeadForm" class="contact-form" >
+                    <form id="sellerLeadForm" class="contact-form" action="php/sell_submit.php" method="POST">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="first_name" style="color: var(--text-dark); font-weight: 600; margin-bottom: 0.5rem; display: block;">First Name</label>
@@ -242,6 +242,6 @@
     </section>
 
     <div id="global-footer-container"></div>
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=2.2"></script>
 </body>
 </html>
