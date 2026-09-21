@@ -1,0 +1,20 @@
+# Disable directory browsing
+Options -Indexes
+
+# Deny direct browser access to sensitive internal backend files
+<FilesMatch "^(config|mailer)\.php$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Redirect any direct browser GET requests to submit endpoints back to home page
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_METHOD} !^POST$
+    RewriteRule ^(submit|sell_submit)\.php$ ../index.html [R=301,L]
+</IfModule>

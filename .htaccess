@@ -1,8 +1,22 @@
+# Disable directory browsing
+Options -Indexes
+
 RewriteEngine On
 
 # Error Documents
 ErrorDocument 404 /404.html
 ErrorDocument 403 /404.html
+
+# Deny direct access to sensitive data files and system files
+<FilesMatch "\.(csv|log|ini|env|sql|bak|sh|git.*)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
 
 # Extensionless HTML URLs
 RewriteCond %{REQUEST_FILENAME} !-f

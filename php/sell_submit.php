@@ -28,11 +28,14 @@ function send_form_response($success, $message, $is_ajax) {
     exit;
 }
 
-// Check if request is POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Block direct GET access (typing URL in browser bar) and redirect to home
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header("Location: ../index.html", true, 301);
+    exit;
+}
 
-    // Load config and mailer
-    require_once __DIR__ . '/mailer.php';
+// Load config and mailer
+require_once __DIR__ . '/mailer.php';
     $config = file_exists(__DIR__ . '/config.php') ? require __DIR__ . '/config.php' : [];
 
     // Cloudflare Turnstile Verification (active when secret key is provided and not placeholder)
@@ -180,11 +183,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Success Response
     send_form_response(true, "Thank you! Aaron Peskowitz will contact you very soon.", $is_ajax);
-
-} else {
-    // Not a POST request
-    send_form_response(false, "There was a problem with your submission, please try again.", $is_ajax);
-}
 
 /**
  * Helper function to safely append lead details to hidden /leads/leads.csv

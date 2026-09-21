@@ -28,10 +28,13 @@ function send_form_response($success, $message, $is_ajax) {
     exit;
 }
 
-// Check if request is POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    // Load config and mailer
+// Block direct GET access (typing URL in browser bar) and redirect to home
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header("Location: ../index.html", true, 301);
+    exit;
+}
+
+// Load config and mailer
     require_once __DIR__ . '/mailer.php';
     $config = file_exists(__DIR__ . '/config.php') ? require __DIR__ . '/config.php' : [];
 
@@ -150,11 +153,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Send success response
     send_form_response(true, "Thank you for your inquiry. Aaron Peskowitz will contact you shortly.", $is_ajax);
-
-} else {
-    // Not a POST request
-    send_form_response(false, "There was a problem with your submission, please try again.", $is_ajax);
-}
 
 /**
  * Helper function to safely append lead details to hidden /leads/leads.csv
