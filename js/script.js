@@ -103,42 +103,89 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ===== Phone Number Formatter: (xxx) xxx-xxxx strictly max 10 digits =====
+    // ===== Phone Number Formatter: (123) 456-7890 strictly max 10 digits =====
     function initPhoneInputs() {
         const phoneInputs = document.querySelectorAll('input[type="tel"], input[name="phone"], .us-phone-input');
+        
+        function formatPhone(digits, isDeleting = false) {
+            if (!digits) return '';
+            const len = digits.length;
+            if (len === 0) return '';
+            if (len < 3) {
+                return `(${digits}`;
+            }
+            if (len === 3) {
+                return isDeleting ? `(${digits}` : `(${digits}) `;
+            }
+            if (len < 6) {
+                return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+            }
+            if (len === 6) {
+                return isDeleting ? `(${digits.slice(0, 3)}) ${digits.slice(3)}` : `(${digits.slice(0, 3)}) ${digits.slice(3)}-`;
+            }
+            return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+        }
+
+        function getCursorForDigitCount(str, count) {
+            if (count <= 0) return 0;
+            let seen = 0;
+            for (let i = 0; i < str.length; i++) {
+                if (/\d/.test(str[i])) {
+                    seen++;
+                    if (seen === count) return i + 1;
+                }
+            }
+            return str.length;
+        }
+
         phoneInputs.forEach(input => {
-            input.setAttribute('placeholder', '(xxx) xxx-xxxx');
+            input.setAttribute('placeholder', '(123) 456-7890');
             input.setAttribute('maxlength', '14');
 
-            let isBackspace = false;
             input.addEventListener('keydown', (e) => {
-                isBackspace = (e.key === 'Backspace' || e.key === 'Delete');
+                // Strictly limit input to 10 digits (excluding formatting)
+                if (/^[0-9]$/.test(e.key)) {
+                    let digits = input.value.replace(/\D/g, '');
+                    if (digits.length === 11 && digits.startsWith('1')) digits = digits.slice(1);
+                    if (digits.length >= 10 && input.selectionStart === input.selectionEnd) {
+                        e.preventDefault();
+                        return;
+                    }
+                }
+
+                // Handle backspace when cursor is directly following formatting characters ')', ' ', '-'
+                if (e.key === 'Backspace' && input.selectionStart === input.selectionEnd) {
+                    const pos = input.selectionStart;
+                    const val = input.value;
+                    if (pos > 0 && /[\s\-\)]/.test(val[pos - 1])) {
+                        e.preventDefault();
+                        let targetDigitIndex = pos - 1;
+                        while (targetDigitIndex >= 0 && /\D/.test(val[targetDigitIndex])) {
+                            targetDigitIndex--;
+                        }
+                        if (targetDigitIndex >= 0) {
+                            const digitsBefore = val.slice(0, targetDigitIndex).replace(/\D/g, '').length;
+                            const newVal = val.slice(0, targetDigitIndex) + val.slice(pos);
+                            let digits = newVal.replace(/\D/g, '');
+                            if (digits.length === 11 && digits.startsWith('1')) digits = digits.slice(1);
+                            digits = digits.slice(0, 10);
+                            input.value = formatPhone(digits, true);
+                            const newPos = getCursorForDigitCount(input.value, digitsBefore);
+                            input.setSelectionRange(newPos, newPos);
+                        }
+                    }
+                }
             });
 
-            input.addEventListener('input', () => {
-                let val = input.value;
-                let digits = val.replace(/\D/g, '');
+            input.addEventListener('input', (e) => {
+                const isDeleting = (e.inputType === 'deleteContentBackward' || e.inputType === 'deleteContentForward');
+                let digits = input.value.replace(/\D/g, '');
                 if (digits.length === 11 && digits.startsWith('1')) {
                     digits = digits.substring(1);
                 }
                 digits = digits.substring(0, 10); // Strictly max 10 digits
 
-                if (isBackspace && (val.endsWith(')') || val.endsWith('-') || val.endsWith(' '))) {
-                    return;
-                }
-
-                const len = digits.length;
-                if (len === 0) {
-                    input.value = '';
-                } else if (len < 3) {
-                    input.value = `(${digits}`;
-                } else if (len === 3) {
-                    input.value = isBackspace ? `(${digits}` : `(${digits}) `;
-                } else if (len <= 6) {
-                    input.value = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
-                } else {
-                    input.value = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
-                }
+                input.value = formatPhone(digits, isDeleting);
             });
 
             input.addEventListener('blur', () => {
@@ -147,6 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 digits = digits.substring(0, 10);
                 if (digits.length === 10) {
                     input.value = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+                } else if (digits.length === 0) {
+                    input.value = '';
+                } else {
+                    input.value = formatPhone(digits, true);
                 }
             });
         });
