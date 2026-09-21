@@ -23,12 +23,12 @@ RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+index(\.html)?[\s?] [NC]
 RewriteRule ^index(\.html)?$ / [R=301,L]
 
 # 2. Redirect any requested .html file to its extensionless clean URL (301 Permanent Redirect)
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+([^.]+)\.html[\s?] [NC]
-RewriteRule ^ %1 [R=301,L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+(.*?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
 
 # 3. Internally map extensionless URL to existing .html file
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.html -f [OR]
-RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-RewriteRule ^([^\.]+)$ $1.html [NC,L]
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f [OR]
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
