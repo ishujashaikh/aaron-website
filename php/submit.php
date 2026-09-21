@@ -5,53 +5,69 @@ header('Content-Type: application/json');
 // Check if request is POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    // Cloudflare Turnstile Verification
-    $turnstile_secret = "YOUR_TURNSTILE_SECRET_KEY_HERE";
+    // Load config and mailer
+    require_once __DIR__ . '/mailer.php';
+    $config = file_exists(__DIR__ . '/config.php') ? require __DIR__ . '/config.php' : [];
+
+    // Cloudflare Turnstile Verification (active when secret key is provided)
+    $turnstile_secret = $config['turnstile_secret'] ?? 'YOUR_TURNSTILE_SECRET_KEY_HERE';
     $turnstile_response = $_POST['cf-turnstile-response'] ?? '';
     
-    if (empty($turnstile_response)) {
-        http_response_code(400);
-        echo json_encode(["status" => "error", "message" => "Please complete the security check."]);
-        exit;
-    }
-    
-    $verify_url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
-    $data = [
-        'secret' => $turnstile_secret,
-        'response' => $turnstile_response,
-        'remoteip' => $_SERVER['REMOTE_ADDR']
-    ];
-    
-    $options = [
-        'http' => [
-            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method'  => 'POST',
-            'content' => http_build_query($data)
-        ]
-    ];
-    
-    $context  = stream_context_create($options);
-    $result = file_get_contents($verify_url, false, $context);
-    
-    if ($result === FALSE) {
-        http_response_code(500);
-        echo json_encode(["status" => "error", "message" => "Error verifying security check."]);
-        exit;
-    }
-    
-    $captcha_success = json_decode($result);
-    if ($captcha_success->success == false) {
-        http_response_code(400);
-        echo json_encode(["status" => "error", "message" => "Security check failed. Please try again."]);
-        exit;
+    if (!empty($turnstile_secret) && $turnstile_secret !== 'YOUR_TURNSTILE_SECRET_KEY_HERE') {
+        if (empty($turnstile_response)) {
+            http_response_code(400);
+            echo json_encode(["status" => "error", "message" => "Please complete the security check."]);
+            exit;
+        }
+        
+        $verify_url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+        $data = [
+            'secret' => $turnstile_secret,
+            'response' => $turnstile_response,
+            'remoteip' => $_SERVER['REMOTE_ADDR']
+        ];
+        
+        $options = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'POST',
+                'content' => http_build_query($data)
+            ]
+        ];
+        
+        $context  = stream_context_create($options);
+        $result = @file_get_contents($verify_url, false, $context);
+        
+        if ($result !== FALSE) {
+            $captcha_success = json_decode($result);
+            if (!empty($captcha_success) && $captcha_success->success === false) {
+                http_response_code(400);
+                echo json_encode(["status" => "error", "message" => "Security verification failed. Please try again."]);
+                exit;
+            }
+        }
     }
 
     // Retrieve and sanitize form inputs
-    $first_name = htmlspecialchars(strip_tags(trim($_POST["first_name"])));
-    $last_name = htmlspecialchars(strip_tags(trim($_POST["last_name"])));
-    $phone = htmlspecialchars(strip_tags(trim($_POST["phone"])));
-    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-    $inquiry_type = htmlspecialchars(strip_tags(trim($_POST["inquiry_type"])));
+    $first_name = htmlspecialchars(strip_tags(trim($_POST["first_name"] ?? '')));
+    $last_name = htmlspecialchars(strip_tags(trim($_POST["last_name"] ?? '')));
+    $phone = htmlspecialchars(strip_tags(trim($_POST["phone"] ?? '')));
+    $email = filter_var(trim($_POST["email"] ?? ''), FILTER_SANITIZE_EMAIL);
+    $inquiry_type = htmlspecialchars(strip_tags(trim($_POST["inquiry_type"] ?? '')));
+
+    // Clean and validate phone number (must not exceed 10 digits)
+    $phone_digits = preg_replace('/\D/', '', $phone);
+    if (strlen($phone_digits) === 11 && str_starts_with($phone_digits, '1')) {
+        $phone_digits = substr($phone_digits, 1);
+    }
+    if (strlen($phone_digits) > 10) {
+        http_response_code(400);
+        echo json_encode(["status" => "error", "message" => "Phone number must not exceed 10 digits."]);
+        exit;
+    }
+    if (strlen($phone_digits) === 10) {
+        $phone = sprintf("(%s) %s-%s", substr($phone_digits, 0, 3), substr($phone_digits, 3, 3), substr($phone_digits, 6, 4));
+    }
     
     // Validation
     if (empty($first_name) || empty($last_name) || empty($phone) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -59,10 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo json_encode(["status" => "error", "message" => "Please fill out all required fields with valid information."]);
         exit;
     }
-
-    // Load mailer and config
-    require_once __DIR__ . '/mailer.php';
-    $config = file_exists(__DIR__ . '/config.php') ? require __DIR__ . '/config.php' : [];
     $recipient = $config['recipient_email'] ?? 'aaron@aaronpeskowitz.com';
     $subject = "⚡ NEW WEBSITE LEAD: $first_name $last_name ($inquiry_type)";
     

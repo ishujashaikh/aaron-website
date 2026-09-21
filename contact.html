@@ -135,7 +135,7 @@
                             <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
                                 <div class="form-group">
                                     <label for="phone" style="color: var(--text-dark); font-weight: 500; display: block; margin-bottom: 0.5rem;">Phone Number</label>
-                                    <input type="tel" id="phone" name="phone" class="us-phone-input" placeholder="e.g. 123-456-7890" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: var(--font-sans);">
+                                    <input type="tel" id="phone" name="phone" class="us-phone-input" placeholder="(xxx) xxx-xxxx" maxlength="14" autocomplete="tel" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: var(--font-sans);">
                                 </div>
                                 <div class="form-group">
                                     <label for="email" style="color: var(--text-dark); font-weight: 500; display: block; margin-bottom: 0.5rem;">Email Address</label>
@@ -158,7 +158,7 @@
                             </div>
 
                             <!-- Turnstile Widget -->
-                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAAi84uM0oR-m0YXX" data-theme="light" data-appearance="interaction-only" style="position: absolute; opacity: 0; pointer-events: none;"></div>
+                            <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY_HERE" data-theme="light" data-size="invisible" style="display:none;"></div>
 
                             <button type="submit" class="btn-dark" style="width: 100%; justify-content: center;">Submit Inquiry <span>↗</span></button>
                         </form>

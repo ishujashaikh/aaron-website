@@ -76,16 +76,68 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form submission handling
-    const leadForm = document.getElementById('leadForm');
-    if (leadForm) {
-        leadForm.addEventListener('submit', function(e) {
+    // ===== Phone Number Formatter: (xxx) xxx-xxxx strictly max 10 digits =====
+    function initPhoneInputs() {
+        const phoneInputs = document.querySelectorAll('input[type="tel"], input[name="phone"], .us-phone-input');
+        phoneInputs.forEach(input => {
+            input.setAttribute('placeholder', '(xxx) xxx-xxxx');
+            input.setAttribute('maxlength', '14');
+
+            let isBackspace = false;
+            input.addEventListener('keydown', (e) => {
+                isBackspace = (e.key === 'Backspace' || e.key === 'Delete');
+            });
+
+            input.addEventListener('input', () => {
+                let val = input.value;
+                let digits = val.replace(/\D/g, '');
+                if (digits.length === 11 && digits.startsWith('1')) {
+                    digits = digits.substring(1);
+                }
+                digits = digits.substring(0, 10); // Strictly max 10 digits
+
+                if (isBackspace && (val.endsWith(')') || val.endsWith('-') || val.endsWith(' '))) {
+                    return;
+                }
+
+                const len = digits.length;
+                if (len === 0) {
+                    input.value = '';
+                } else if (len < 3) {
+                    input.value = `(${digits}`;
+                } else if (len === 3) {
+                    input.value = isBackspace ? `(${digits}` : `(${digits}) `;
+                } else if (len <= 6) {
+                    input.value = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+                } else {
+                    input.value = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+                }
+            });
+
+            input.addEventListener('blur', () => {
+                let digits = input.value.replace(/\D/g, '');
+                if (digits.length === 11 && digits.startsWith('1')) digits = digits.substring(1);
+                digits = digits.substring(0, 10);
+                if (digits.length === 10) {
+                    input.value = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+                }
+            });
+        });
+    }
+    initPhoneInputs();
+
+    // Form submission handling for all lead forms
+    const submitForms = document.querySelectorAll('form[action="php/submit.php"], #leadForm, #buyerLeadForm');
+    submitForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
             
             const submitBtn = this.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerText;
-            submitBtn.innerText = 'Sending...';
-            submitBtn.disabled = true;
+            const originalBtnText = submitBtn ? submitBtn.innerText : 'Sending...';
+            if (submitBtn) {
+                submitBtn.innerText = 'Sending...';
+                submitBtn.disabled = true;
+            }
 
             const formData = new FormData(this);
 
@@ -96,10 +148,16 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    leadForm.reset();
+                    form.reset();
+                    if (typeof turnstile !== 'undefined') {
+                        try { turnstile.reset(); } catch(err) {}
+                    }
                     window.location.href = 'thank-you.html';
                 } else {
                     alert(data.message);
+                    if (typeof turnstile !== 'undefined') {
+                        try { turnstile.reset(); } catch(err) {}
+                    }
                 }
             })
             .catch(error => {
@@ -107,11 +165,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('An error occurred. Please try again.');
             })
             .finally(() => {
-                submitBtn.innerText = originalBtnText;
-                submitBtn.disabled = false;
+                if (submitBtn) {
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                }
             });
         });
-    }
+    });
 
     // Optional: Add simple header background on scroll
     const header = document.querySelector('header');
@@ -125,14 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // US Phone Auto-Formatting
-    const phoneInputs = document.querySelectorAll('.us-phone-input');
-    phoneInputs.forEach(input => {
-        input.addEventListener('input', function(e) {
-            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-            e.target.value = !x[2] ? x[1] : x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '');
-        });
-    });
+
 
     // Custom State Search Dropdown
     const stateSearchInput = document.getElementById('state_search');
