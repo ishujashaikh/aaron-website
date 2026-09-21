@@ -3,7 +3,7 @@
             <div class="footer-grid-5">
                 <div class="footer-col brand-col">
                     <div class="footer-brand">
-                        <a href="index.html" style="text-decoration: none; display: inline-block;"><img src="assets/images/logo_full.webp" alt="Aaron Peskowitz Real Estate" class="footer-logo"></a>
+                        <a href="/" style="text-decoration: none; display: inline-block;"><img src="assets/images/logo_full.webp" alt="Aaron Peskowitz Real Estate" class="footer-logo"></a>
                     </div>
                     <p class="footer-desc">Helping home buyers and sellers navigate the New York real estate market with proven expertise, unmatched negotiation skills, and a commitment to your success.</p>
                 </div>
@@ -12,11 +12,11 @@
                 <div class="footer-col">
                     <h4 class="footer-heading">Navigate</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="faq.html">FAQs</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="testimonials.html">Reviews</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about">About Us</a></li>
+                        <li><a href="faq">FAQs</a></li>
+                        <li><a href="contact">Contact</a></li>
+                        <li><a href="testimonials">Reviews</a></li>
                     </ul>
                 </div>
 
@@ -24,10 +24,10 @@
                 <div class="footer-col">
                     <h4 class="footer-heading">Services</h4>
                     <ul class="footer-links">
-                        <li><a href="buy.html">Buying a Home</a></li>
-                        <li><a href="sell.html">Selling a Home</a></li>
-                        <li><a href="index.html#contact">Free Evaluation</a></li>
-                        <li><a href="index.html">Property Portfolio</a></li>
+                        <li><a href="buy">Buying a Home</a></li>
+                        <li><a href="sell">Selling a Home</a></li>
+                        <li><a href="/#contact">Free Evaluation</a></li>
+                        <li><a href="/">Property Portfolio</a></li>
                     </ul>
                 </div>
 
@@ -35,9 +35,9 @@
                 <div class="footer-col">
                     <h4 class="footer-heading">Legal</h4>
                     <ul class="footer-links">
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms & Conditions</a></li>
-                        <li><a href="fair-housing.html">Fair Housing Act</a></li>
+                        <li><a href="privacy">Privacy Policy</a></li>
+                        <li><a href="terms">Terms & Conditions</a></li>
+                        <li><a href="fair-housing">Fair Housing Act</a></li>
                         <li><a href="sitemap.xml">Sitemap</a></li>
                     </ul>
                 </div>

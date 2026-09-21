@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="10;url=index.html">
+    <meta http-equiv="refresh" content="10;url=/">
     <title>Thank You! | Aaron Peskowitz Real Estate | eXp Realty</title>
     <meta name="description" content="Thank you for contacting Aaron Peskowitz Real Estate. Your request has been received and we will contact you shortly.">
     <!-- DESIGNED & DEVELOPED by Leads Pilots (www.leadspilots.com) & JASS Solutions (www.jass-solutions.com) -->
@@ -84,24 +84,24 @@
     <!-- ===== NAVIGATION ===== -->
     <header id="main-header">
         <div class="nav-inner">
-            <a href="index.html" class="logo-brand">
+            <a href="/" class="logo-brand">
                 <img src="assets/images/logo_icon.webp" alt="Aaron Peskowitz Icon" class="logo-icon">
                 <img src="assets/images/logo_text.webp" alt="Aaron Peskowitz Real Estate" class="logo-text">
             </a>
             <nav class="main-nav">
                 <ul class="nav-links">
-                    <li><a href="index.html" class="nav-pill">Home</a></li>
-                    <li><a href="buy.html" class="nav-pill">Find Your Dream House</a></li>
-                    <li><a href="sell.html" class="nav-pill">Sell Your House</a></li>
-                    <li><a href="about.html" class="nav-pill">About</a></li>
-                    <li><a href="testimonials.html" class="nav-pill">Testimonials</a></li>
-                    <li><a href="contact.html" class="nav-pill">Contact</a></li>
+                    <li><a href="/" class="nav-pill">Home</a></li>
+                    <li><a href="buy" class="nav-pill">Find Your Dream House</a></li>
+                    <li><a href="sell" class="nav-pill">Sell Your House</a></li>
+                    <li><a href="about" class="nav-pill">About</a></li>
+                    <li><a href="testimonials" class="nav-pill">Testimonials</a></li>
+                    <li><a href="contact" class="nav-pill">Contact</a></li>
                 </ul>
                 <div class="mobile-nav-cta-wrap">
-                    <a href="contact.html" class="btn-dark mobile-nav-cta">Book a consultation <span class="nav-cta-arrow">↗</span></a>
+                    <a href="contact" class="btn-dark mobile-nav-cta">Book a consultation <span class="nav-cta-arrow">↗</span></a>
                 </div>
             </nav>
-            <a href="contact.html" class="nav-cta">Book a consultation <span class="nav-cta-arrow">↗</span></a>
+            <a href="contact" class="nav-cta">Book a consultation <span class="nav-cta-arrow">↗</span></a>
             <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -124,7 +124,7 @@
             </div>
 
             <div class="thankyou-actions">
-                <a href="index.html" class="nav-cta" style="padding: 0.9rem 2rem; font-size: 0.95rem;">Return to Homepage Now ↗</a>
+                <a href="/" class="nav-cta" style="padding: 0.9rem 2rem; font-size: 0.95rem;">Return to Homepage Now ↗</a>
                 <a href="tel:+13157969255" class="btn" style="background: var(--bg-primary); border: 1px solid var(--border-dark); color: var(--off-white); padding: 0.9rem 2rem; border-radius: var(--radius-sm); font-size: 0.95rem; text-decoration: none; font-weight: 600;">Call (315) 796-9255</a>
             </div>
         </div>
@@ -135,7 +135,7 @@
 
     <script src="js/script.js"></script>
     <script>
-        // 10-Second Countdown Timer & Automatic Redirect Script
+        // Smooth countdown to redirect
         (function() {
             let seconds = 10;
             const countdownEl = document.getElementById('countdown');
@@ -146,7 +146,7 @@
                 }
                 if (seconds <= 0) {
                     clearInterval(timer);
-                    window.location.href = "index.html";
+                    window.location.href = "/";
                 }
             }, 1000);
         })();

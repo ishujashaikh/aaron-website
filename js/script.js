@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (typeof turnstile !== 'undefined') {
                         try { turnstile.reset(); } catch(err) {}
                     }
-                    window.location.href = 'thank-you.html';
+                    window.location.href = 'thank-you';
                 } else {
                     alert(data.message);
                     if (typeof turnstile !== 'undefined') {
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (typeof turnstile !== 'undefined') {
                         try { turnstile.reset(); } catch(err) {}
                     }
-                    window.location.href = 'thank-you.html';
+                    window.location.href = 'thank-you';
                 } else {
                     alert(data.message);
                     if (typeof turnstile !== 'undefined') {

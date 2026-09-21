@@ -19,7 +19,7 @@ function send_form_response($success, $message, $is_ajax) {
         ]);
     } else {
         if ($success) {
-            header("Location: ../thank-you.html");
+            header("Location: ../thank-you");
         } else {
             http_response_code(400);
             echo "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Submission Notice</title><meta name='viewport' content='width=device-width, initial-scale=1'><style>body{background:#09090b;color:#f4f4f0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;padding:20px;text-align:center;} .box{background:#18181b;padding:40px;border-radius:16px;border:1px solid #27272a;max-width:440px;box-shadow:0 20px 40px rgba(0,0,0,0.6);} h2{margin-top:0;font-family:Georgia,serif;} a{color:#f4f4f0;margin-top:20px;display:inline-block;text-decoration:underline;}</style></head><body><div class='box'><h2>Inquiry Notice</h2><p>" . htmlspecialchars($message) . "</p><a href='javascript:history.back()'>← Return to Form</a></div></body></html>";
@@ -30,7 +30,7 @@ function send_form_response($success, $message, $is_ajax) {
 
 // Block direct GET access (typing URL in browser bar) and redirect to home
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    header("Location: ../index.html", true, 301);
+    header("Location: ../", true, 301);
     exit;
 }
 
