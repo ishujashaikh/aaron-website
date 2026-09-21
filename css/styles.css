@@ -407,7 +407,7 @@ img { max-width: 100%; display: block; }
   padding-top: 8rem;
   padding-bottom: 5rem;
   background: linear-gradient(180deg, rgba(9, 9, 11, 0.70) 0%, rgba(9, 9, 11, 0.88) 100%), 
-              url('../assets/images/city_hero.jpg') center/cover no-repeat;
+              url('../assets/images/city_hero.webp') center/cover no-repeat;
   text-align: center;
 }
 
@@ -1833,10 +1833,10 @@ select option {
   justify-content: center;
 }
 .buy-hero {
-  background: linear-gradient(rgba(17, 17, 17, 0.6), rgba(17, 17, 17, 0.6)), url('../assets/images/property_1.png') center/cover no-repeat;
+  background: linear-gradient(rgba(17, 17, 17, 0.6), rgba(17, 17, 17, 0.6)), url('../assets/images/property_1.webp') center/cover no-repeat;
 }
 .sell-hero {
-  background: linear-gradient(rgba(17, 17, 17, 0.6), rgba(17, 17, 17, 0.6)), url('../assets/images/property_2.png') center/cover no-repeat;
+  background: linear-gradient(rgba(17, 17, 17, 0.6), rgba(17, 17, 17, 0.6)), url('../assets/images/property_2.webp') center/cover no-repeat;
 }
 .buy-hero h1, .sell-hero h1 {
   font-size: 4rem;

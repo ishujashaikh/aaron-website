@@ -3,7 +3,7 @@
             <div class="footer-grid-5">
                 <div class="footer-col brand-col">
                     <div class="footer-brand">
-                        <a href="index.html" style="text-decoration: none; display: inline-block;"><img src="assets/images/logo_full.png" alt="Aaron Peskowitz Real Estate" class="footer-logo"></a>
+                        <a href="index.html" style="text-decoration: none; display: inline-block;"><img src="assets/images/logo_full.webp" alt="Aaron Peskowitz Real Estate" class="footer-logo"></a>
                     </div>
                     <p class="footer-desc">Helping home buyers and sellers navigate the New York real estate market with proven expertise, unmatched negotiation skills, and a commitment to your success.</p>
                 </div>
