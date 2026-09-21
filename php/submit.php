@@ -60,8 +60,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Email Setup
-    $recipient = "therealaaronp@gmail.com";
+    // Load mailer and config
+    require_once __DIR__ . '/mailer.php';
+    $config = file_exists(__DIR__ . '/config.php') ? require __DIR__ . '/config.php' : [];
+    $recipient = $config['recipient_email'] ?? 'aaron@aaronpeskowitz.com';
     $subject = "⚡ NEW WEBSITE LEAD: $first_name $last_name ($inquiry_type)";
     
     $email_content = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><meta name='color-scheme' content='light dark'><meta name='supported-color-schemes' content='light dark'>";
@@ -85,11 +87,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_content .= "<tr><td style='background-color:#09090b !important; padding:25px 30px; text-align:center; border-top:1px solid #27272a !important; font-size:12px; color:#a1a1aa !important;'><strong style='color:#f4f4f0 !important;'>Aaron Peskowitz Real Estate</strong> &bull; REALTOR® with <a href='https://mny.exprealty.com/agents/1748711/Aaron+Peskowitz' style='color:#f4f4f0 !important; text-decoration:underline;'>eXp Realty</a><br>Serving Chadwicks, NY and surrounding communities &bull; Office: (315) 796-9255</td></tr>";
     $email_content .= "</table></td></tr></table></body></html>";
 
-    $email_headers = "MIME-Version: 1.0" . "\r\n";
-    $email_headers .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
-    $email_headers .= "From: therealaaronp@gmail.com\r\n";
-    $email_headers .= "Reply-To: $email\r\n";
-
     // Log lead to protected CSV in root /leads/ directory
     log_lead_to_csv(
         "General Contact / Buyer Inquiry",
@@ -101,8 +98,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "Agreed to TCPA & SMS Compliance Disclosures"
     );
 
-    // Send email using PHP mail() standard on GoDaddy
-    if (mail($recipient, $subject, $email_content, $email_headers)) {
+    // Send email using mailer engine (Spaceship SMTP or PHP mail)
+    $mail_sent = send_app_email($recipient, $subject, $email_content, $email, "$first_name $last_name");
+
+    // Optional customer autoresponder
+    $auto_subject = "Thank you for contacting Aaron Peskowitz Real Estate";
+    $auto_content = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><meta name='color-scheme' content='light dark'></head>";
+    $auto_content .= "<body style='margin:0; padding:30px 10px; background-color:#09090b !important; font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif; color:#f4f4f0 !important;'>";
+    $auto_content .= "<table role='presentation' width='100%' style='max-width:600px; margin:0 auto; background-color:#18181b !important; border-radius:16px; border:1px solid #27272a !important; padding:35px;'>";
+    $auto_content .= "<tr><td align='center'><img src='https://aaronpeskowitz.com/assets/images/logo_full.png' alt='Aaron Peskowitz Real Estate' style='max-width:220px; width:100%; height:auto;'></td></tr>";
+    $auto_content .= "<tr><td style='padding-top:25px;'><h1 style='font-size:22px; font-weight:700; color:#f4f4f0; margin:0 0 14px 0; font-family:Georgia,serif;'>Thank You for Reaching Out, $first_name!</h1>";
+    $auto_content .= "<p style='color:#f4f4f0; font-size:15px; line-height:1.7; margin:0 0 16px 0;'>I have received your inquiry regarding <strong>$inquiry_type</strong> across Chadwicks, Utica, Herkimer, and surrounding Central New York communities.</p>";
+    $auto_content .= "<p style='color:#a1a1aa; font-size:14px; line-height:1.7; margin:0 0 24px 0;'>I will be in touch with you personally very shortly to answer your questions and assist with your real estate goals.</p>";
+    $auto_content .= "<div style='background-color:#121214; border:1px solid #27272a; border-radius:8px; padding:16px; border-left:4px solid #f4f4f0; font-size:13px; color:#a1a1aa;'><strong>Aaron Peskowitz</strong> &bull; REALTOR® with eXp Realty<br>Phone: <a href='tel:+13157969255' style='color:#f4f4f0;'>(315) 796-9255</a> &bull; Email: <a href='mailto:$recipient' style='color:#f4f4f0;'>$recipient</a></div>";
+    $auto_content .= "</td></tr></table></body></html>";
+    send_app_email($email, $auto_subject, $auto_content, $recipient, "Aaron Peskowitz Real Estate");
+
+    if ($mail_sent) {
         http_response_code(200);
         echo json_encode(["status" => "success", "message" => "Thank you for your inquiry. Aaron Peskowitz will contact you shortly."]);
     } else {

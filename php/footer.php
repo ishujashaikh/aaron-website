@@ -48,7 +48,7 @@
                     <ul class="footer-contact-list">
                         <li>Serving Chadwicks, NY and surrounding communities</li>
                         <li><a href="tel:+13157969255">(315) 796-9255</a> (Office)</li>
-                        <li><a href="mailto:therealaaronp@gmail.com">therealaaronp@gmail.com</a></li>
+                        <li><a href="mailto:aaron@aaronpeskowitz.com">aaron@aaronpeskowitz.com</a></li>
                         <li>Mon - Sat · 9 AM - 7 PM ET</li>
                     </ul>
                 </div>

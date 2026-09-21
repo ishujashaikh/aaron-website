@@ -65,7 +65,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    $agent_email = "therealaaronp@gmail.com";
+    // Load mailer and config
+    require_once __DIR__ . '/mailer.php';
+    $config = file_exists(__DIR__ . '/config.php') ? require __DIR__ . '/config.php' : [];
+    $agent_email = $config['recipient_email'] ?? 'aaron@aaronpeskowitz.com';
 
     // 1. Email to Agent (Seller Lead Notification)
     $notification_subject = "🏡 NEW SELLER LEAD: $street_address";
@@ -91,12 +94,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $notification_content .= "<tr><td style='background-color:#09090b !important; padding:25px 30px; text-align:center; border-top:1px solid #27272a !important; font-size:12px; color:#a1a1aa !important;'><strong style='color:#f4f4f0 !important;'>Aaron Peskowitz Real Estate</strong> &bull; REALTOR® with <a href='https://mny.exprealty.com/agents/1748711/Aaron+Peskowitz' style='color:#f4f4f0 !important; text-decoration:underline;'>eXp Realty</a><br>Serving Chadwicks, NY and surrounding communities &bull; Office: (315) 796-9255</td></tr>";
     $notification_content .= "</table></td></tr></table></body></html>";
     
-    $notification_headers = "MIME-Version: 1.0" . "\r\n";
-    $notification_headers .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
-    $notification_headers .= "From: therealaaronp@gmail.com\r\n";
-    $notification_headers .= "Reply-To: $email\r\n";
-    
-    mail($agent_email, $notification_subject, $notification_content, $notification_headers);
+    // Send email to Agent using mailer engine
+    send_app_email($agent_email, $notification_subject, $notification_content, $email, "$first_name $last_name");
 
     // 2. Email to Customer (Auto-Responder)
     $autoresponder_subject = "Thank you for contacting Aaron Peskowitz";
@@ -115,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $autoresponder_content .= "<img src='https://aaronpeskowitz.com/assets/images/headshot.webp' alt='Aaron Peskowitz' style='width:65px; height:65px; border-radius:50%; object-fit:cover; border:2px solid #27272a; display:block;'></td>";
     $autoresponder_content .= "<td valign='middle' style='padding-left:15px;'><h3 class='text-main' style='margin:0 0 3px 0; font-size:17px; color:#f4f4f0 !important; font-family:Georgia,serif;'>Aaron Peskowitz</h3>";
     $autoresponder_content .= "<p class='text-muted' style='margin:0 0 6px 0; font-size:13px; color:#a1a1aa !important; font-weight:600;'>REALTOR® &bull; <a href='https://mny.exprealty.com/agents/1748711/Aaron+Peskowitz' style='color:#f4f4f0 !important; text-decoration:underline;'>eXp Realty</a></p>";
-    $autoresponder_content .= "<p class='text-muted' style='margin:0; font-size:13px; color:#a1a1aa !important; line-height:1.5;'>Direct: <a href='tel:+13157969255' style='color:#f4f4f0 !important; font-weight:700;'> (315) 796-9255</a><br>Email: <a href='mailto:therealaaronp@gmail.com' style='color:#f4f4f0 !important; text-decoration:underline;'>therealaaronp@gmail.com</a></p>";
+    $autoresponder_content .= "<p class='text-muted' style='margin:0; font-size:13px; color:#a1a1aa !important; line-height:1.5;'>Direct: <a href='tel:+13157969255' style='color:#f4f4f0 !important; font-weight:700;'> (315) 796-9255</a><br>Email: <a href='mailto:$agent_email' style='color:#f4f4f0 !important; text-decoration:underline;'>$agent_email</a></p>";
     $autoresponder_content .= "</td></tr></table>";
     $autoresponder_content .= "<p style='text-align:center; padding:5px 0 10px 0;'><a href='https://aaronpeskowitz.com' style='background-color:#f4f4f0 !important; color:#09090b !important; font-size:14px; font-weight:700; text-decoration:none; padding:14px 28px; border-radius:8px; display:inline-block; border:1px solid #ffffff !important;'>Explore Website &amp; Featured Listings ↗</a></p>";
     $autoresponder_content .= "</td></tr>";
@@ -126,12 +125,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $autoresponder_content .= "</div></td></tr>";
     $autoresponder_content .= "</table></td></tr></table></body></html>";
     
-    $autoresponder_headers = "MIME-Version: 1.0" . "\r\n";
-    $autoresponder_headers .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
-    $autoresponder_headers .= "From: $agent_email\r\n";
-    $autoresponder_headers .= "Reply-To: $agent_email\r\n";
-    
-    mail($email, $autoresponder_subject, $autoresponder_content, $autoresponder_headers);
+    // Send autoresponder using mailer engine
+    send_app_email($email, $autoresponder_subject, $autoresponder_content, $agent_email, "Aaron Peskowitz Real Estate");
 
     // Log lead to protected CSV in root /leads/ directory
     log_lead_to_csv(
