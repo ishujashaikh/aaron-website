@@ -666,7 +666,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="us-phone-input" placeholder="(123) 456-7890" maxlength="14" autocomplete="tel" required>
+                            <input type="tel" id="phone" name="phone" class="us-phone-input" placeholder="(123) 456-7890" maxlength="14" inputmode="numeric" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" autocomplete="tel" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address</label>
@@ -695,6 +695,120 @@
     </section>
 
     <div id="global-footer-container"></div>
-    <script src="js/script.js?v=2.3"></script>
+    <script>
+    (function() {
+        function setupPhoneInput(input) {
+            if (!input || input.dataset.phoneBound) return;
+            input.dataset.phoneBound = 'true';
+            input.setAttribute('placeholder', '(123) 456-7890');
+            input.setAttribute('maxlength', '14');
+            input.setAttribute('inputmode', 'numeric');
+
+            function formatPhone(digits, isDeleting) {
+                if (!digits) return '';
+                var len = digits.length;
+                if (len < 3) return '(' + digits;
+                if (len === 3) return isDeleting ? '(' + digits : '(' + digits + ') ';
+                if (len < 6) return '(' + digits.slice(0, 3) + ') ' + digits.slice(3);
+                if (len === 6) return isDeleting ? '(' + digits.slice(0, 3) + ') ' + digits.slice(3) : '(' + digits.slice(0, 3) + ') ' + digits.slice(3) + '-';
+                return '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6, 10);
+            }
+
+            function getCursor(str, count) {
+                if (count <= 0) return 0;
+                var seen = 0;
+                for (var i = 0; i < str.length; i++) {
+                    if (/\d/.test(str[i])) {
+                        seen++;
+                        if (seen === count) return i + 1;
+                    }
+                }
+                return str.length;
+            }
+
+            input.addEventListener('keydown', function(e) {
+                var allowed = ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
+                if (allowed.indexOf(e.key) !== -1) {
+                    if (e.key === 'Backspace' && input.selectionStart === input.selectionEnd) {
+                        var pos = input.selectionStart;
+                        var val = input.value;
+                        if (pos > 0 && /[\s\-\)]/.test(val[pos - 1])) {
+                            e.preventDefault();
+                            var idx = pos - 1;
+                            while (idx >= 0 && /\D/.test(val[idx])) idx--;
+                            if (idx >= 0) {
+                                var digitsBefore = val.slice(0, idx).replace(/\D/g, '').length;
+                                var newVal = val.slice(0, idx) + val.slice(pos);
+                                var digits = newVal.replace(/\D/g, '');
+                                if (digits.length === 11 && digits.indexOf('1') === 0) digits = digits.slice(1);
+                                digits = digits.slice(0, 10);
+                                input.value = formatPhone(digits, true);
+                                var newPos = getCursor(input.value, digitsBefore);
+                                input.setSelectionRange(newPos, newPos);
+                            }
+                        }
+                    }
+                    return;
+                }
+                if (e.ctrlKey || e.metaKey) return;
+                // Strictly block all alphabets and non-digit characters
+                if (!/^[0-9]$/.test(e.key)) {
+                    e.preventDefault();
+                    return;
+                }
+                // Strictly limit to 10 digits
+                var curDigits = input.value.replace(/\D/g, '');
+                if (curDigits.length === 11 && curDigits.indexOf('1') === 0) curDigits = curDigits.slice(1);
+                if (curDigits.length >= 10 && input.selectionStart === input.selectionEnd) {
+                    e.preventDefault();
+                    return;
+                }
+            });
+
+            input.addEventListener('paste', function(e) {
+                e.preventDefault();
+                var text = (e.clipboardData || window.clipboardData).getData('text') || '';
+                var digits = text.replace(/\D/g, '');
+                if (digits.length === 11 && digits.indexOf('1') === 0) digits = digits.slice(1);
+                digits = digits.slice(0, 10);
+                input.value = formatPhone(digits, false);
+            });
+
+            input.addEventListener('input', function(e) {
+                var isDeleting = (e.inputType === 'deleteContentBackward' || e.inputType === 'deleteContentForward');
+                var digits = input.value.replace(/\D/g, '');
+                if (digits.length === 11 && digits.indexOf('1') === 0) digits = digits.slice(1);
+                digits = digits.slice(0, 10);
+                input.value = formatPhone(digits, isDeleting);
+            });
+
+            input.addEventListener('blur', function() {
+                var digits = input.value.replace(/\D/g, '');
+                if (digits.length === 11 && digits.indexOf('1') === 0) digits = digits.slice(1);
+                digits = digits.slice(0, 10);
+                if (digits.length === 10) {
+                    input.value = '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6, 10);
+                } else if (digits.length === 0) {
+                    input.value = '';
+                } else {
+                    input.value = formatPhone(digits, true);
+                }
+            });
+        }
+
+        function init() {
+            var list = document.querySelectorAll('input[type="tel"], input[name="phone"], .us-phone-input');
+            for (var i = 0; i < list.length; i++) {
+                setupPhoneInput(list[i]);
+            }
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+    </script>
+    <script src="js/script.js?v=2.4"></script>
 </body>
 </html>

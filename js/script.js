@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ===== Phone Number Formatter: (123) 456-7890 strictly max 10 digits =====
+    // ===== Phone Number Formatter: (123) 456-7890 strictly max 10 digits & block alphabets =====
     function initPhoneInputs() {
         const phoneInputs = document.querySelectorAll('input[type="tel"], input[name="phone"], .us-phone-input');
         
@@ -139,42 +139,70 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         phoneInputs.forEach(input => {
+            if (input.dataset.phoneBound) return;
+            input.dataset.phoneBound = 'true';
             input.setAttribute('placeholder', '(123) 456-7890');
             input.setAttribute('maxlength', '14');
+            input.setAttribute('inputmode', 'numeric');
 
             input.addEventListener('keydown', (e) => {
-                // Strictly limit input to 10 digits (excluding formatting)
-                if (/^[0-9]$/.test(e.key)) {
-                    let digits = input.value.replace(/\D/g, '');
-                    if (digits.length === 11 && digits.startsWith('1')) digits = digits.slice(1);
-                    if (digits.length >= 10 && input.selectionStart === input.selectionEnd) {
-                        e.preventDefault();
-                        return;
+                const allowedControlKeys = [
+                    'Backspace', 'Delete', 'Tab', 'Escape', 'Enter',
+                    'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
+                    'Home', 'End'
+                ];
+                if (allowedControlKeys.includes(e.key)) {
+                    if (e.key === 'Backspace' && input.selectionStart === input.selectionEnd) {
+                        const pos = input.selectionStart;
+                        const val = input.value;
+                        if (pos > 0 && /[\s\-\)]/.test(val[pos - 1])) {
+                            e.preventDefault();
+                            let targetDigitIndex = pos - 1;
+                            while (targetDigitIndex >= 0 && /\D/.test(val[targetDigitIndex])) {
+                                targetDigitIndex--;
+                            }
+                            if (targetDigitIndex >= 0) {
+                                const digitsBefore = val.slice(0, targetDigitIndex).replace(/\D/g, '').length;
+                                const newVal = val.slice(0, targetDigitIndex) + val.slice(pos);
+                                let digits = newVal.replace(/\D/g, '');
+                                if (digits.length === 11 && digits.startsWith('1')) digits = digits.slice(1);
+                                digits = digits.slice(0, 10);
+                                input.value = formatPhone(digits, true);
+                                const newPos = getCursorForDigitCount(input.value, digitsBefore);
+                                input.setSelectionRange(newPos, newPos);
+                            }
+                        }
                     }
+                    return;
                 }
 
-                // Handle backspace when cursor is directly following formatting characters ')', ' ', '-'
-                if (e.key === 'Backspace' && input.selectionStart === input.selectionEnd) {
-                    const pos = input.selectionStart;
-                    const val = input.value;
-                    if (pos > 0 && /[\s\-\)]/.test(val[pos - 1])) {
-                        e.preventDefault();
-                        let targetDigitIndex = pos - 1;
-                        while (targetDigitIndex >= 0 && /\D/.test(val[targetDigitIndex])) {
-                            targetDigitIndex--;
-                        }
-                        if (targetDigitIndex >= 0) {
-                            const digitsBefore = val.slice(0, targetDigitIndex).replace(/\D/g, '').length;
-                            const newVal = val.slice(0, targetDigitIndex) + val.slice(pos);
-                            let digits = newVal.replace(/\D/g, '');
-                            if (digits.length === 11 && digits.startsWith('1')) digits = digits.slice(1);
-                            digits = digits.slice(0, 10);
-                            input.value = formatPhone(digits, true);
-                            const newPos = getCursorForDigitCount(input.value, digitsBefore);
-                            input.setSelectionRange(newPos, newPos);
-                        }
-                    }
+                // Allow Ctrl/Cmd combinations (Copy, Cut, Paste, Select All, Undo)
+                if (e.ctrlKey || e.metaKey) {
+                    return;
                 }
+
+                // STRICTLY BLOCK ALL ALPHABETS AND NON-DIGIT CHARACTERS
+                if (!/^[0-9]$/.test(e.key)) {
+                    e.preventDefault();
+                    return;
+                }
+
+                // Strictly limit input to 10 digits
+                let digits = input.value.replace(/\D/g, '');
+                if (digits.length === 11 && digits.startsWith('1')) digits = digits.slice(1);
+                if (digits.length >= 10 && input.selectionStart === input.selectionEnd) {
+                    e.preventDefault();
+                    return;
+                }
+            });
+
+            input.addEventListener('paste', (e) => {
+                e.preventDefault();
+                const pastedText = (e.clipboardData || window.clipboardData).getData('text') || '';
+                let digits = pastedText.replace(/\D/g, '');
+                if (digits.length === 11 && digits.startsWith('1')) digits = digits.slice(1);
+                digits = digits.slice(0, 10);
+                input.value = formatPhone(digits, false);
             });
 
             input.addEventListener('input', (e) => {
@@ -190,8 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             input.addEventListener('blur', () => {
                 let digits = input.value.replace(/\D/g, '');
-                if (digits.length === 11 && digits.startsWith('1')) digits = digits.substring(1);
-                digits = digits.substring(0, 10);
+                if (digits.length === 11 && digits.startsWith('1')) digits = digits.slice(1);
+                digits = digits.slice(0, 10);
                 if (digits.length === 10) {
                     input.value = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
                 } else if (digits.length === 0) {
