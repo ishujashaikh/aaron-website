@@ -57,7 +57,7 @@
             <div class="footer-bottom">
                 <p class="footer-disclaimer">Data provided is for the consumer's personal, non-commercial use and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. Information is deemed reliable but not guaranteed.</p>
                 <p class="copyright">Copyright &copy; 2026. Aaron Peskowitz. All rights reserved.</p>
-                <p class="footer-credit">Designed &amp; Developed by <a href="https://www.leadspilots.com/" target="_blank" rel="noopener" title="Real estate buyer &amp; seller appointments, CRM and Virtual Assistant support for licensed agents.">Leads Pilots (Real estate buyer &amp; seller appointments, CRM and Virtual Assistant support for licensed agents.)</a>, in collaboration with <a href="https://www.jass-solutions.com/" target="_blank" rel="noopener">JASS Solutions</a></p>
+                <p class="footer-credit">Designed &amp; Developed by <a href="https://www.leadspilots.com/" target="_blank" rel="noopener">Leads Pilots</a>, in collaboration with <a href="https://www.jass-solutions.com/" target="_blank" rel="noopener">JASS Solutions</a></p>
             </div>
         </div>
     </footer>
