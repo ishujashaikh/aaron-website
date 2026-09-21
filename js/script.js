@@ -1,3 +1,28 @@
+// ===== Responsive Favicon for Dark / Light Mode =====
+(function initResponsiveFavicon() {
+    function updateFavicon() {
+        const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const iconPath = isDark ? 'assets/images/logo_icon_white.webp' : 'assets/images/logo_icon.webp';
+        
+        const favicons = document.querySelectorAll('link[rel="icon"]');
+        favicons.forEach(link => {
+            if (!link.hasAttribute('media') || link.id === 'app-favicon') {
+                link.href = iconPath;
+            }
+        });
+    }
+
+    if (window.matchMedia) {
+        const mq = window.matchMedia('(prefers-color-scheme: dark)');
+        if (mq.addEventListener) {
+            mq.addEventListener('change', updateFavicon);
+        } else if (mq.addListener) {
+            mq.addListener(updateFavicon);
+        }
+    }
+    updateFavicon();
+})();
+
 // ===== Sticky header scroll state =====
 const mainHeader = document.getElementById('main-header');
 if (mainHeader) {
