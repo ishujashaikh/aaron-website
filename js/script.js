@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Dynamically load the global footer
 document.addEventListener("DOMContentLoaded", function() {
     const footerContainer = document.getElementById('global-footer-container');
-    if (footerContainer) {
+    if (footerContainer && !footerContainer.children.length) {
         fetch('php/footer.php')
             .then(response => {
                 if (!response.ok) throw new Error('Footer not found');
