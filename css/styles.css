@@ -1262,6 +1262,9 @@ select option {
   flex-direction: column;
   gap: 5px;
   z-index: 1001;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .mobile-nav-toggle .bar {
@@ -1271,6 +1274,7 @@ select option {
   background-color: var(--off-white);
   border-radius: 2px;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .mobile-nav-toggle.active .bar:nth-child(1) {
@@ -1422,6 +1426,7 @@ select option {
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
     max-height: calc(100vh - 75px);
     overflow-y: auto;
+    z-index: 1000;
   }
 
   .main-nav.active {

@@ -208,7 +208,42 @@
             </div>
         </div>
     </footer>
+    <script>
+    (function() {
+        function initMobileNav() {
+            var toggle = document.getElementById('mobileNavToggle');
+            var nav = document.querySelector('.main-nav');
+            if (!toggle || !nav || toggle.dataset.navBound) return;
+            toggle.dataset.navBound = 'true';
 
+            toggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggle.classList.toggle('active');
+                nav.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!toggle.contains(e.target) && !nav.contains(e.target)) {
+                    toggle.classList.remove('active');
+                    nav.classList.remove('active');
+                }
+            });
+
+            var links = nav.querySelectorAll('a');
+            for (var i = 0; i < links.length; i++) {
+                links[i].addEventListener('click', function() {
+                    toggle.classList.remove('active');
+                    nav.classList.remove('active');
+                });
+            }
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMobileNav);
+        } else {
+            initMobileNav();
+        }
+    })();
+    </script>
     <script src="js/script.js"></script>
 </body>
 </html>

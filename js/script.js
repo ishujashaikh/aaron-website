@@ -451,7 +451,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Mobile navigation toggle
     const mobileNavToggle = document.getElementById('mobileNavToggle');
     const mainNav = document.querySelector('.main-nav');
-    if (mobileNavToggle && mainNav) {
+    if (mobileNavToggle && mainNav && !mobileNavToggle.dataset.navBound) {
+        mobileNavToggle.dataset.navBound = 'true';
         mobileNavToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             mobileNavToggle.classList.toggle('active');
