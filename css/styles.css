@@ -1386,7 +1386,13 @@ select option {
   }
 
   .nav-inner {
-    gap: 1rem;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .logo-brand {
+    margin: 0 auto;
+    justify-content: center;
   }
 
   .nav-inner > .nav-cta {
@@ -1395,6 +1401,11 @@ select option {
 
   .mobile-nav-toggle {
     display: flex;
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
   }
 
   .main-nav {
@@ -1626,6 +1637,10 @@ select option {
 @media (max-width: 480px) {
   #main-header {
     padding: 0.75rem 1rem;
+  }
+
+  .mobile-nav-toggle {
+    right: 1rem;
   }
 
   .logo-brand {
