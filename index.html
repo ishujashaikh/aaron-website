@@ -228,7 +228,7 @@
             </div>
             
             <div class="testi-carousel-wrapper" style="margin-top: 3rem;">
-                <button class="carousel-btn prev-btn">❮</button>
+                <button type="button" class="carousel-btn prev-btn" aria-label="Previous properties">❮</button>
                 <div class="testi-carousel portfolio-carousel">
                     <!-- Property 1: 2644 Oneida St, Sauquoit -->
                     <a href="https://www.zillow.com/homedetails/2644-Oneida-St-Sauquoit-NY-13456/31603607_zpid/" target="_blank" rel="noopener" class="property-card testi-slide" style="display: block; text-decoration: none; color: inherit; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); box-shadow: none;">
@@ -576,7 +576,7 @@
                         <span class="btn-dark" style="background: var(--accent); color: white;">View Profile <span class="prop-arrow">↗</span></span>
                     </a>
                 </div>
-                <button class="carousel-btn next-btn">❯</button>
+                <button type="button" class="carousel-btn next-btn" aria-label="Next properties">❯</button>
             </div>
         </div>
     </section>
@@ -796,11 +796,47 @@
             });
         }
 
+        function initCarousels() {
+            var carousels = document.querySelectorAll('.testi-carousel, .portfolio-carousel');
+            for (var c = 0; c < carousels.length; c++) {
+                var carousel = carousels[c];
+                if (carousel.dataset.carouselBound) continue;
+                carousel.dataset.carouselBound = 'true';
+
+                var wrapper = carousel.closest('.testi-carousel-wrapper') || carousel.parentElement;
+                if (!wrapper) continue;
+                var prevBtn = wrapper.querySelector('.prev-btn');
+                var nextBtn = wrapper.querySelector('.next-btn');
+
+                (function(car, prev, next) {
+                    if (prev) {
+                        prev.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            var slide = car.querySelector('.testi-slide, .property-card');
+                            var gap = parseFloat(getComputedStyle(car).gap) || 24;
+                            var scrollAmount = slide ? (slide.offsetWidth + gap) : (car.clientWidth * 0.85);
+                            car.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                        });
+                    }
+                    if (next) {
+                        next.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            var slide = car.querySelector('.testi-slide, .property-card');
+                            var gap = parseFloat(getComputedStyle(car).gap) || 24;
+                            var scrollAmount = slide ? (slide.offsetWidth + gap) : (car.clientWidth * 0.85);
+                            car.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                        });
+                    }
+                })(carousel, prevBtn, nextBtn);
+            }
+        }
+
         function init() {
             var list = document.querySelectorAll('input[type="tel"], input[name="phone"], .us-phone-input');
             for (var i = 0; i < list.length; i++) {
                 setupPhoneInput(list[i]);
             }
+            initCarousels();
         }
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', init);

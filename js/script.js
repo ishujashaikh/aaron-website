@@ -397,29 +397,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Testimonials Carousel
-    const carousels = document.querySelectorAll('.testi-carousel');
-    carousels.forEach(carousel => {
-        const wrapper = carousel.closest('.testi-carousel-wrapper');
-        const prevBtn = wrapper.querySelector('.prev-btn');
-        const nextBtn = wrapper.querySelector('.next-btn');
+    // Testimonials & Portfolio Carousel
+    function initCarousels() {
+        const carousels = document.querySelectorAll('.testi-carousel, .portfolio-carousel');
+        carousels.forEach(carousel => {
+            if (carousel.dataset.carouselBound) return;
+            carousel.dataset.carouselBound = 'true';
 
-        if (prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', () => {
-                const slide = carousel.querySelector('.testi-slide');
-                const gap = parseFloat(getComputedStyle(carousel).gap) || 0;
-                const scrollAmount = slide.offsetWidth + gap;
-                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            });
+            const wrapper = carousel.closest('.testi-carousel-wrapper') || carousel.parentElement;
+            if (!wrapper) return;
+            const prevBtn = wrapper.querySelector('.prev-btn');
+            const nextBtn = wrapper.querySelector('.next-btn');
 
-            nextBtn.addEventListener('click', () => {
-                const slide = carousel.querySelector('.testi-slide');
-                const gap = parseFloat(getComputedStyle(carousel).gap) || 0;
-                const scrollAmount = slide.offsetWidth + gap;
-                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            });
-        }
-    });
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const slide = carousel.querySelector('.testi-slide, .property-card');
+                    const gap = parseFloat(getComputedStyle(carousel).gap) || 24;
+                    const scrollAmount = slide ? (slide.offsetWidth + gap) : (carousel.clientWidth * 0.85);
+                    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const slide = carousel.querySelector('.testi-slide, .property-card');
+                    const gap = parseFloat(getComputedStyle(carousel).gap) || 24;
+                    const scrollAmount = slide ? (slide.offsetWidth + gap) : (carousel.clientWidth * 0.85);
+                    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+            }
+        });
+    }
+    initCarousels();
 });
 
 // Dynamically load the global footer
